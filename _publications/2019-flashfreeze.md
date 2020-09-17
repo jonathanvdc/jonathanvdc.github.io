@@ -12,7 +12,7 @@ paperurl: 'https://jonathanvdc.github.io/files/2019-flashfreeze.pdf'
 
 Object serialization is important to a variety of applications, including session migration and distributed computing. A general JavaScript object serializer must support function serialization as functions are first-class objects. However, JavaScript offers no built-in function serialization and limits custom serializers by exposing no meta operator to query a function’s captured variables. Code instrumentation can expose captured variables but state-of-the-art instrumentation techniques introduce high overheads, vary in supported syntax and/or use complex (de)serialization algorithms. We introduce FlashFreeze, an instrumentation technique based on capture lists. FlashFreeze achieves a tiny run time overhead: an Octane score reduction of 3% compared to 76% for the state-of-the-art ThingsMigrate tool and 1% for the work-in-progress FSM tool. FlashFreeze supports all self-contained ECMAScript 5 programs except for specific uses of `eval`, `with`, and source code inspection. FlashFreeze’s construction gives rise to simple (de)serialization algorithms.
 
-Download paper [here](../files/2019-flashfreeze.pdf). FlashFreeze is an open source npm module. Its source code is [here](https://github.com/nokia/ts-serialize-closures).
+Download paper [here](/files/2019-flashfreeze.pdf). FlashFreeze is an open source npm module. Its source code is [here](https://github.com/nokia/ts-serialize-closures).
 
 BibTeX citation:
 ```

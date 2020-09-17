@@ -12,6 +12,7 @@ redirect_from:
 Education
 ======
 * BSc in Computer Science, University of Antwerp, 2017
+  * Erasmus Exchange Program, University of Edinburgh, Edinburgh, United Kingdom, Fall semester of 2016&ndash;2017
 * MSc in Compiler Science Engineering, Ghent University, 2019
 * PhD in Compiler Science, McGill University, 2024 (expected)
 
