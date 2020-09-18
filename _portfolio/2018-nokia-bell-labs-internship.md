@@ -9,7 +9,7 @@ JavaScript has some serialization support via JSON, but it doesn't support seria
 
 I designed FlashFreeze, a JavaScript serializer that can serialize and deserialize almost any object (minor restrictions apply), including functions.
 FlashFreeze was unexpectedly rather successful: We discovered a novel construction for querying captured variables in JavaScript that we [published](/publication/2019-flashfreeze) at the META 2019 workshop, co-located with SPLASH.
-I even got to [present](/talk/2019-flashfreeze) the paper!
+I even got to [present](/talks/2019-flashfreeze) the paper!
 
 ## How it works
 
