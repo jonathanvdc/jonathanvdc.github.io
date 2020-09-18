@@ -5,7 +5,7 @@ collection: portfolio
 ---
 
 During my internship at Nokia Bell Labs, one of the problems I was presented with was the fact that we needed to move arbitrary objects between devices, but sometimes those objects could include functions.
-JavaScript has some serialization support via JSON, but it doesn't support serializing functions or non-tree data structure.
+JavaScript has some serialization support via JSON, but it doesn't support serializing functions or non-tree data structures.
 
 I designed FlashFreeze, a JavaScript serializer that can serialize and deserialize almost any object (minor restrictions apply), including functions.
 FlashFreeze was unexpectedly rather successful: We discovered a novel construction for querying captured variables in JavaScript that we [published](/publication/2019-flashfreeze) at the META 2019 workshop, co-located with SPLASH.
