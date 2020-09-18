@@ -1,6 +1,6 @@
 ---
 title: "FlashFreeze"
-excerpt: "I created an arbitrary object serializer for JavaScript.<br/>Part of my internship at Nokia Bell Labs."
+excerpt: "I created an arbitrary object serializer for JavaScript.<br/>Part of my internship at Nokia Bell Labs.<br/><img style='width:500px;' src='/images/teaser-2019-flashfreeze.png'>"
 collection: portfolio
 ---
 
@@ -32,3 +32,5 @@ Measured on the Octane benchmark suite, we achieved a score reduction of 3% comp
 
 Moreover, capture lists give rise to intuitive and easy-to-implement serialization and deserialization algorithms,
 which we implemented in [our open-source tool](https://github.com/nokia/ts-serialize-closures).
+
+<img src='/images/teaser-2019-flashfreeze.png'>
