@@ -28,7 +28,7 @@ Attaching a capture list to a function doesn't have a remarkably high overhead b
 Moreover, the capture list function has already been parsed by the virtual machine, so instantiating it prior to attaching it to its owner function shouldn't take too much work.
 No data needs to be copied or kept up to date explicitly; FlashFreeze's capture lists rely on the virtual machine's scope tree to query the latest version of variables at evaluation time.
 
-Measured on the Octane benchmark suite, we achieved a score reduction of 3% compared to 76% for the state-of-the-art ThingsMigrate tool and 1% for the work-in-progress FSM tool.
+Measured on the Octane benchmark suite, we achieved a score reduction of only 3% compared to 76% for the state-of-the-art ThingsMigrate tool and 1% for the work-in-progress FSM tool.
 
 Moreover, capture lists give rise to intuitive and easy-to-implement serialization and deserialization algorithms,
 which we implemented in [our open-source tool](https://github.com/nokia/ts-serialize-closures).
