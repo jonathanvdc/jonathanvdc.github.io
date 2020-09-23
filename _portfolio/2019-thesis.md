@@ -15,6 +15,6 @@ My contributions were as follows:
 
 On average, benchmarks that used my GC were twice as fast as when they were compiled to use CUDA's `malloc` implementation. While CUDA `malloc` is known to be a slow allocator, this data shows that GCs on GPUs are feasible.
 
-You can download my master's thesis [here](/files/2019-garbage-collection-abstractions-for-high-level-gpu-languages).
+You can download my master's thesis [here](/files/2019-garbage-collection-abstractions-for-high-level-gpu-languages.pdf).
 
 <img src='/images/teaser-2019-julia.svg'>
