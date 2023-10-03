@@ -3,7 +3,7 @@ title: "FlashFreeze: Low-Overhead JavaScript Instrumentation for Function Serial
 authors: "Jonathan Van der Cruysse, Lode Hoste, Wolfgang Van Raemdonck"
 collection: publications
 permalink: /publication/2019-flashfreeze
-excerpt: 'Arbitrary object serialization for JavaScript.'
+excerpt: 'Arbitrary object serialization for JavaScript'
 date: 2019-10-20
 venue: 'Proceedings of the 4th ACM SIGPLAN International Workshop on Meta-Programming Techniques and Reflection, co-located with SPLASH'
 paperurl: 'https://jonathanvdc.github.io/files/2019-flashfreeze.pdf'

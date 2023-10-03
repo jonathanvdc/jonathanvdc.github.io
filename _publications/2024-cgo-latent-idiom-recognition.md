@@ -3,7 +3,7 @@ title: "Latent Idiom Recognition for a Minimalist Functional Array Language usin
 authors: "Jonathan Van der Cruysse, Christophe Dubach"
 collection: publications
 permalink: /publication/2024-cgo-latent-idiom-recognition
-excerpt: 'Arbitrary object serialization for JavaScript.'
+excerpt: 'An idiom recognition approach rooted in equality saturation'
 date: 2024-03-02
 venue: 'Proceedings of the 22nd ACM/IEEE International Symposium on Code Generation and Optimization'
 paperurl: 'https://jonathanvdc.github.io/files/2024-cgo-latent-idiom-recognition.pdf'
@@ -27,9 +27,9 @@ Download paper [here](/files/2024-cgo-latent-idiom-recognition.pdf). An [artifac
 
 BibTeX citation:
 ```
-@inproceedings{vandercruysse2019flashfreeze,
-    author = {Van der Cruysse, Jonathan and Hoste, Lode and Van Raemdonck, Wolfgang},
-    title = {FlashFreeze: Low-Overhead JavaScript Instrumentation for Function Serialization},
+@inproceedings{vandercruysse2024liar,
+    author = {Van der Cruysse, Jonathan and Dubach, Christophe},
+    title = {Latent Idiom Recognition for a Minimalist Functional Array Language using Equality Saturation},
     year = {2024},
     url = {https://jonathanvdc.github.io/files/2024-cgo-latent-idiom-recognition.pdf},
     abstract = {Accelerating programs is typically done by recognizing code idioms matching high-performance libraries or hardware interfaces. However, recognizing such idioms automatically is challenging. The idiom recognition machinery is difficult to write and requires expert knowledge. In addition, slight variations in the input program might hide the idiom and defeat the recognizer.
