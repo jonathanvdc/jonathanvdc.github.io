@@ -23,7 +23,7 @@ This removes the need for hand-crafted analysis passes, or for having to learn a
 Coupled with equality saturation, this approach is able to match the core functions from the BLAS and PyTorch libraries on a set of computational kernels.
 Compared to reference C kernel implementations, the approach produces a geometric mean speedup of 1.46x for C programs using BLAS, when generating such programs from the high-level minimalist language.
 
-Download paper [here](/files/2024-cgo-latent-idiom-recognition.pdf). An [artifact](https://zenodo.org/record/8316752) is available on Zenodo.
+Download preprint [here](/files/2024-cgo-latent-idiom-recognition.pdf). An [artifact](https://zenodo.org/record/8316752) is available on Zenodo.
 
 BibTeX citation:
 ```
