@@ -4,7 +4,7 @@ excerpt: "An online simulated democracy."
 collection: projects
 ---
 
-I'm an active member of [SimDemocracy](https://reddit.com/r/SimDemocracy/), an online simulated democracy of over 5,000 people.
+From 2019 until 2023, I was an active member of [SimDemocracy](https://reddit.com/r/SimDemocracy/), an online simulated democracy of over 5,000 people.
 
 I have held a variety of political offices on SimDemocracy: Economic Councilor, Economic Supervisor, Presidential Advisor, Treasury Secretary, etc.
 I'm currently the Deputy Election Commissioner, which means that I organize elections when the main Election Commissioner cannot do so.
