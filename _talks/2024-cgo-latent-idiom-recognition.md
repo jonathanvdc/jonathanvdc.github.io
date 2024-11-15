@@ -8,4 +8,4 @@ venue: '22nd ACM/IEEE International Symposium on Code Generation and Optimizatio
 location: "Edinburgh, United Kingdom"
 ---
 
-I presented [my paper on latent idiom recognition](/publication/2024-cgo-latent-idiom-recognition) at [CGO 2024](https://conf.researchr.org/home/cgo-2024).
+I presented [my paper on latent idiom recognition](/publication/2024-cgo-latent-idiom-recognition) at [CGO 2024](https://conf.researchr.org/home/cgo-2024). The slide deck for this presentatation is available as [PPTX](/files/2024-cgo-slides.pptx) and as [PDF](/files/2024-cgo-slides.pdf).
