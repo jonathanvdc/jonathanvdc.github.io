@@ -4,11 +4,11 @@ excerpt: "Foresight is a parallel, extensible equality saturation library in Sca
 collection: portfolio
 ---
 
-I designed and implemented [Foresight](https://github.com/jonathanvdc/foresight), an equality saturation library motivated by concrete limitations I observed in existing engines, such as single-threaded execution, rigid saturation loops, and limited support for metadata. These constraints made it difficult to scale rewriting tasks and extend the engine with new analyses or features.
+I designed and implemented [Foresight](https://github.com/jonathanvdc/foresight), an equality saturation library motivated by concrete limitations I observed in existing engines, such as single-threaded execution, rigid saturation loops, and limited support for metadata.
 
 ## Design goals
 
-Foresight's architecture is guided by three core ideas: parallel rewriting, saturation strategies and generalized metadata.
+Foresight's architecture is guided by three core ideas that address the limitaitons of prior approaches: parallel rewriting, saturation strategies and generalized metadata.
 
 ### Parallel rewriting as a first-class concern
 
