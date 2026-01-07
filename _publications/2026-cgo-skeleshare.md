@@ -5,7 +5,7 @@ collection: publications
 permalink: /publication/2026-cgo-skeleshare
 excerpt: 'An idiom recognition approach rooted in equality saturation'
 date: 2026-02-01
-venue: 'Proceedings of the 24nd ACM/IEEE International Symposium on Code Generation and Optimization'
+venue: 'Proceedings of the 24nd ACM/IEEE International Symposium on Code Generation and Optimization (CGO)'
 paperurl: 'https://jonathanvdc.github.io/files/2026-cgo-skeleshare.pdf'
 #citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'
 ---
