@@ -1,5 +1,5 @@
 ---
-title: "FlashFreeze"
+title: "FlashFreeze, JavaScript Serializer"
 excerpt: "I created an arbitrary object serializer for JavaScript.<br/>Part of my internship at Nokia Bell Labs.<br/><img style='width:500px;' src='/images/teaser-2019-flashfreeze.png'>"
 collection: portfolio
 ---
