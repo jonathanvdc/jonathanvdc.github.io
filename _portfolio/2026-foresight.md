@@ -22,7 +22,7 @@ This flexibility enables experimentation and reuse, allowing saturation to be ta
 
 ### Generalized metadata
 
-Metadata is implemented as extensible observers attached to e-classes and e-nodes, unifying various analyses and enabling advanced features such as incremental equality saturation.
+Metadata is implemented as extensible observers attached to e-graphs, unifying various analyses and enabling advanced features such as incremental equality saturation.
 
 ## Results
 
