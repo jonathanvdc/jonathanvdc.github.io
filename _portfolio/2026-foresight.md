@@ -1,5 +1,5 @@
 ---
-title: "Foresight"
+title: "Foresight, Scala Equality Saturation Engine"
 excerpt: "Foresight is a parallel, extensible equality saturation library in Scala, featuring programmable saturation strategies, generalized metadata, and deferred parallel rewriting."
 collection: portfolio
 ---
@@ -26,8 +26,8 @@ Metadata is implemented as extensible observers attached to e-graphs, unifying v
 
 ## Results
 
-Evaluation of Foresight demonstrates significant speedups over prior Scala-based equality saturation systems, strong parallel scalability, and a reduction in engineering effort required to implement new features and analyses.
-Its design encourages experimentation and extension, making it suitable as a research and prototyping platform.
+Evaluation shows that Foresight consistently outperforms prior Scala-based equality saturation engines, achieving up to 16× speedups on a reimplementation of latent idiom recognition and robust scaling for key rewrite and analysis phases under parallel execution.
+Its deferred rewriting architecture allows parallel rule matching and application to scale effectively, while generalized metadata enables features such as incremental equality saturation without modifying the core engine. Across multiple case studies, Foresight reduces the amount of custom, application-specific saturation code from hundreds of lines to a small number of composable strategy definitions.
 
 The source code is available on GitHub at https://github.com/jonathanvdc/foresight.
 The design and evaluation of Foresight are described in detail in our [CC’26 paper](/publication/2026-cc-foresight), which explores the system’s architecture and compares it to previous approaches.
