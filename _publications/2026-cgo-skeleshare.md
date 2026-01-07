@@ -3,7 +3,7 @@ title: "SkeleShare: Algorithmic Skeletons and Equality Saturation for Hardware R
 authors: "Jonathan Van der Cruysse, Tzung-Han Juang, Shakiba Bolbolian Khah, Christophe Dubach"
 collection: publications
 permalink: /publication/2026-cgo-skeleshare
-excerpt: 'An idiom recognition approach rooted in equality saturation'
+excerpt: 'An automated approach to hardware resource allocation and sharing using equality saturation and algorithmic skeletons'
 date: 2026-02-01
 venue: 'Proceedings of the 24nd ACM/IEEE International Symposium on Code Generation and Optimization (CGO)'
 paperurl: 'https://jonathanvdc.github.io/files/2026-cgo-skeleshare.pdf'
