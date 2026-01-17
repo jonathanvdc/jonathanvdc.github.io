@@ -25,4 +25,4 @@ IR design is a common thread throughout my work.
 The scability challenge is also a topic I am exploring in my research.
 
 My work has resulted in multiple peer-reviewed publications at top compiler venues (CGO, CC) and in open-source compiler infrastructure.
-I am currently exploring research and engineering roles in compilers, programming languages, and systems.
+I am currently exploring Canadian research and engineering roles in compilers, programming languages, and systems.
