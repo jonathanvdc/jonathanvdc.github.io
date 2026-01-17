@@ -8,8 +8,9 @@ redirect_from:
   - /about.html
 ---
 
-I am a PhD student at [McGill University's](https://www.mcgill.ca/) [School of Computer Science](https://www.cs.mcgill.ca/) and I am affiliated with [Mila](https://mila.quebec).
+I am completing a PhD at [McGill University's](https://www.mcgill.ca/) [School of Computer Science](https://www.cs.mcgill.ca/) and I am affiliated with [Mila](https://mila.quebec).
 My supervisor is [Christophe Dubach](https://cdubach.bitbucket.io).
+I design compiler systems that make advanced program optimizations practical, with a focus on parallelism, hardware efficiency, and extensible IR design.
 
 My research interests span optimizing compilers, equality saturation and emerging hardware.
 The intersection of these interests is the topic I pursue in the context of my PhD.
