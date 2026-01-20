@@ -23,7 +23,7 @@ Foresight is implemented in Scala and evaluated on four case studies: classical 
 The evaluation shows that Foresight outperforms several existing equality saturation engines, including egglog, on parallel workloads, and achieves up to a 16× speedup when reimplementing an existing idiom recognition system—while also producing higher-quality results.
 
 Download the preprint [here](/files/2026-cc-foresight.pdf).
-An [artifact](https://zenodo.org/records/17955956) is available on Zenodo.
+The [source code](https://github.com/jonathanvdc/foresight) is available on GitHub and an [artifact](https://zenodo.org/records/17955956) is available on Zenodo.
 
 <!-- BibTeX citation:
 ```
