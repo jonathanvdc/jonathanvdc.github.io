@@ -6,9 +6,10 @@ The site is built with Jekyll and hosted by GitHub Pages. My resume PDF is gener
 
 ## Local development
 
-Install the GitHub Pages gem bundle, then serve the site locally:
+Use Ruby 3.3.4, install the GitHub Pages gem bundle, then serve the site locally:
 
 ```sh
+chruby ruby-3.3.4
 bundle install
 bundle exec jekyll serve
 ```
