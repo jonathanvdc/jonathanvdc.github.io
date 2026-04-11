@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { byDateDesc, entriesFromGlob, formatDate } from '../../lib/content.js';
+
+const talks = entriesFromGlob(
+  'talks',
+  import.meta.glob('../../../_talks/*.md', { eager: true })
+).sort(byDateDesc);
+---
+
+<BaseLayout title="Talks" description="Conference talks, presentations, and invited talks.">
+  <article class="article">
+    <p class="eyebrow">Speaking</p>
+    <h1>Talks</h1>
+    <p class="dek">Conference presentations and talks on compiler optimization, equality saturation, FPGA compilation, and programming language implementation.</p>
+    <ol class="collection-list">
+      {talks.map((entry) => (
+        <li class="collection-card">
+          <h2><a href={entry.url}>{entry.frontmatter.title}</a></h2>
+          <p class="metadata">
+            {[entry.frontmatter.venue, entry.frontmatter.location, formatDate(entry.frontmatter.date)].filter(Boolean).join(' · ')}
+          </p>
+          {entry.frontmatter.excerpt && <p>{entry.frontmatter.excerpt}</p>}
+        </li>
+      ))}
+    </ol>
+  </article>
+</BaseLayout>

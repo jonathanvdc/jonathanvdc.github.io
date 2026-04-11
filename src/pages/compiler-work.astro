@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CompilerWorkContent, { frontmatter } from '../../_pages/compiler-work.md';
+---
+
+<BaseLayout title={frontmatter.title} description="Compiler systems and research projects most relevant to compiler engineering roles.">
+  <article class="article">
+    <h1>{frontmatter.title}</h1>
+    <CompilerWorkContent />
+  </article>
+</BaseLayout>

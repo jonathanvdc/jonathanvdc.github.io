@@ -1,0 +1,25 @@
+---
+const nav = [
+  { href: '/compiler-work/', label: 'Compiler Work' },
+  { href: '/cv/', label: 'Resume' },
+  { href: '/publications/', label: 'Publications' },
+  { href: '/talks/', label: 'Talks' },
+  { href: '/teaching/', label: 'Teaching' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Jonathan Van der Cruysse home">
+    <span class="brand-mark">Jvdc</span>
+    <span class="brand-text">Jonathan Van der Cruysse</span>
+  </a>
+  <nav class="nav" aria-label="Main navigation">
+    {nav.map((item) => (
+      <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+        {item.label}
+      </a>
+    ))}
+  </nav>
+</header>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { compact, formatDate } from '../lib/content.js';
+
+const { entry, eyebrow } = Astro.props;
+const { frontmatter, Content } = entry;
+const metadata = compact([
+  frontmatter.type,
+  frontmatter.venue,
+  frontmatter.location,
+  frontmatter.date && formatDate(frontmatter.date)
+]);
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.excerpt ?? frontmatter.title}>
+  <article class="article">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{frontmatter.title}</h1>
+    {frontmatter.authors && <p class="authors">{frontmatter.authors}</p>}
+    {metadata.length > 0 && <p class="metadata">{metadata.join(' · ')}</p>}
+    {frontmatter.excerpt && <p class="dek">{frontmatter.excerpt}</p>}
+    <div class="action-row">
+      {frontmatter.paperurl && <a class="button" href={frontmatter.paperurl}>Paper PDF</a>}
+      {frontmatter.slidesurl && <a class="button button--secondary" href={frontmatter.slidesurl}>Slides</a>}
+    </div>
+    <Content />
+  </article>
+</BaseLayout>

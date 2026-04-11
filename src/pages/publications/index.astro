@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { byDateDesc, entriesFromGlob, formatDate } from '../../lib/content.js';
+
+const publications = entriesFromGlob(
+  'publication',
+  import.meta.glob('../../../_publications/*.md', { eager: true })
+).sort(byDateDesc);
+---
+
+<BaseLayout title="Publications" description="Peer-reviewed publications by Jonathan Van der Cruysse.">
+  <article class="article">
+    <p class="eyebrow">Research</p>
+    <h1>Publications</h1>
+    <p class="dek">Peer-reviewed compiler systems work spanning equality saturation, FPGA compilation, GPU language runtimes, and idiom recognition.</p>
+    <ol class="collection-list">
+      {publications.map((entry) => (
+        <li class="collection-card">
+          <h2><a href={entry.url}>{entry.frontmatter.title}</a></h2>
+          {entry.frontmatter.authors && <p class="authors">{entry.frontmatter.authors}</p>}
+          <p class="metadata">
+            {[entry.frontmatter.venue, formatDate(entry.frontmatter.date)].filter(Boolean).join(' · ')}
+          </p>
+          {entry.frontmatter.excerpt && <p>{entry.frontmatter.excerpt}</p>}
+        </li>
+      ))}
+    </ol>
+  </article>
+</BaseLayout>
