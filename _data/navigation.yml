@@ -1,5 +1,8 @@
 # main links links
 main:
+  - title: "Compiler Work"
+    url: /compiler-work/
+
   - title: "Resume"
     url: /cv/
 
@@ -11,12 +14,6 @@ main:
 
   - title: "Teaching"
     url: /teaching/    
-    
-  - title: "Portfolio"
-    url: /portfolio/
-
-  - title: "Projects"
-    url: /projects/
 
   # - title: "Blog Posts"
   #   url: /year-archive/

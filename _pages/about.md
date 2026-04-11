@@ -11,12 +11,12 @@ redirect_from:
 I am a compiler engineer and PhD candidate at [McGill University's](https://www.mcgill.ca/) [School of Computer Science](https://www.cs.mcgill.ca/), affiliated with [Mila](https://mila.quebec).
 I specialize in compiler optimizations, Intermediate Representation (IR) design, and equality saturation, with a focus on making advanced program transformations practical for real systems.
 
-I build compiler infrastructure for ML accelerators, Field-Programmable Gate Arrays (FPGAs), managed runtimes, and MLIR tooling.
+I build compiler infrastructure for ML accelerators, Field-Programmable Gate Arrays (FPGAs), managed runtimes, and [MLIR tooling](/projects/2026-mlir-net).
 My recent work includes [Foresight](/portfolio/2026-foresight), a parallel equality saturation engine published at CC 2026, and [SkeleShare](/publication/2026-cgo-skeleshare), a CGO 2026 system for automated FPGA resource sharing.
 
 I am currently exploring Canadian research and engineering roles in compilers, programming languages, and systems.
 
-[Resume](/cv/) · [GitHub](https://github.com/jonathanvdc) · [Publications](/publications/) · [Email](mailto:jonathan.vandercruysse@mail.mcgill.ca)
+[Compiler Work](/compiler-work/) · [Resume](/cv/) · [GitHub](https://github.com/jonathanvdc) · [Publications](/publications/) · [Email](mailto:jonathan.vandercruysse@mail.mcgill.ca)
 
 Selected Compiler Work
 ======
@@ -29,6 +29,7 @@ Selected Compiler Work
   The generated C implementations achieve a 1.46x geometric mean speedup over reference kernels.
 * [Flame](/projects/2018-flame): an SSA-based compiler framework for managed languages.
   Flame reads and optimizes .NET programs and lowers managed-language code toward targets such as LLVM IR and WebAssembly.
+* [MLIR.NET](/projects/2026-mlir-net): strongly typed MLIR infrastructure for .NET, with generated dialect-specific APIs from TableGen/ODS definitions.
 * [Modelverse JIT](/portfolio/2017-modelverse-jit-compiler): a tiered just-in-time compiler for graph-based bytecode that reaches roughly 37x speedups over the previous virtual machine.
 
 What I Am Looking For

@@ -1,9 +1,20 @@
 ---
 title: "Flame"
-excerpt: "An optimizing compiler for managed code."
+excerpt: "An SSA-based compiler framework for managed languages, with optimization passes and LLVM/WebAssembly-oriented back ends."
 collection: projects
 ---
 
-[Flame](https://github.com/jonathanvdc/flame) is a hobby project that aims to fill a niche similar to LLVM's but for managed code. Flame can read and write .NET executables and libraries. It can also optimize them by translating the .NET Intermediate Language (IL) to an SSA form IR.
+[Flame](https://github.com/jonathanvdc/flame) is an SSA-based compiler framework for managed languages.
+It explores what LLVM-like reusable compiler infrastructure can look like for managed-language ecosystems.
+Flame reads managed-language programs, performs whole-program optimization, and lowers code toward targets such as LLVM IR and WebAssembly.
 
-Flame supports a [wealth of optimizations](https://jonathanvdc.github.io/Flame/api/Flame.Compiler.Transforms.html), ranging from constant propagation to (partial) scalar replacement of aggregates and LINQ optimization.
+The framework includes front-end infrastructure for managed bytecode, an SSA intermediate representation, optimization passes, and multiple back ends.
+Flame supports a [wealth of optimizations](https://jonathanvdc.github.io/Flame/api/Flame.Compiler.Transforms.html), ranging from constant propagation to partial scalar replacement of aggregates and LINQ-oriented optimization.
+
+Selected capabilities include:
+
+* Reading and optimizing .NET Intermediate Language (IL).
+* Representing managed-language programs in SSA form.
+* Whole-program optimization infrastructure.
+* LLVM IR and WebAssembly-oriented lowering.
+* Optimization passes for constant propagation, scalar replacement, and higher-level managed-code patterns.
