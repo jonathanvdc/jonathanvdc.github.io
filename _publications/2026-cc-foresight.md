@@ -9,6 +9,15 @@ venue: "Proceedings of the 35th ACM SIGPLAN International Conference on Compiler
 paperurl: "https://jonathanvdc.github.io/files/2026-cc-foresight.pdf"
 ---
 
+At a glance
+======
+
+* Published at CC 2026.
+* Introduces Foresight, a parallel and customizable equality saturation engine implemented in Scala.
+* Adds programmable saturation strategies, generalized e-graph metadata, and deferred parallel rewriting.
+* Achieves up to a 16x speedup when reimplementing an existing idiom-recognition system.
+* [Preprint](/files/2026-cc-foresight.pdf) · [Source](https://github.com/jonathanvdc/foresight) · [Artifact](https://zenodo.org/records/17955956)
+
 Equality saturation is a powerful compiler optimization technique that represents many semantically equivalent program variants in a single data structure, an e-graph, deferring optimization decisions to a final extraction phase. While equality saturation has enabled a wide range of optimizations and program analyses, existing frameworks suffer from two fundamental limitations: they are largely single-threaded, and they rely on rigid, hard-coded saturation loops that are difficult to customize.
 
 This paper introduces Foresight, a new equality saturation library designed around parallelism and extensibility. Foresight enables parallel e-matching and rewriting through a thread-safe e-graph and a novel deferred update mechanism that batches and optimizes rewrite effects before applying them. This design exposes substantial fine-grained parallelism while preserving the semantics of classic equality saturation.
@@ -24,23 +33,3 @@ The evaluation shows that Foresight outperforms several existing equality satura
 
 Download the preprint [here](/files/2026-cc-foresight.pdf).
 The [source code](https://github.com/jonathanvdc/foresight) is available on GitHub and an [artifact](https://zenodo.org/records/17955956) is available on Zenodo.
-
-<!-- BibTeX citation:
-```
-@inproceedings{vandercruysse2024liar,
-    author = {Van der Cruysse, Jonathan and Dubach, Christophe},
-    title = {Latent Idiom Recognition for a Minimalist Functional Array Language using Equality Saturation},
-    year = {2024},
-    url = {https://jonathanvdc.github.io/files/2024-cgo-latent-idiom-recognition.pdf},
-    abstract = {Accelerating programs is typically done by recognizing code idioms matching high-performance libraries or hardware interfaces. However, recognizing such idioms automatically is challenging. The idiom recognition machinery is difficult to write and requires expert knowledge. In addition, slight variations in the input program might hide the idiom and defeat the recognizer.
-    
-    This paper advocates for the use of a minimalist functional array language supporting a small, but expressive, set of operators. The minimalist design leads to a tiny sets of rewrite rules, which encode the language semantics. Crucially, the same minimalist language is also used to encode idioms. This removes the need for hand-crafted analysis passes, or for having to learn a complex domain-specific language to define the idioms.
-    
-    Coupled with equality saturation, this approach is able to match the core functions from the BLAS and PyTorch libraries on a set of computational kernels. Compared to reference C kernel implementations, the approach produces a geometric mean speedup of 1.46x for C programs using BLAS, when generating such programs from the high-level minimalist language.},
-    booktitle = {Proceedings of the 22nd ACM/IEEE International Symposium on Code Generation and Optimization},
-    numpages = {9},
-    keywords = {equality saturation, functional programming, array programming, pattern matching, libraries},
-    location = {Edinburgh, United Kingdom},
-    series = {CGO '24}
-}
-``` -->

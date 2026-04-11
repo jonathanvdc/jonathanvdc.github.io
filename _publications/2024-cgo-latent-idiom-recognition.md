@@ -10,6 +10,15 @@ paperurl: 'https://jonathanvdc.github.io/files/2024-cgo-latent-idiom-recognition
 #citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'
 ---
 
+At a glance
+======
+
+* Published at CGO 2024.
+* Uses equality saturation to recognize BLAS and PyTorch idioms hidden inside functional array programs.
+* Introduces a minimalist functional array IR where both programs and idioms are represented in the same language.
+* Generates C implementations with a 1.46x geometric mean speedup over reference kernels.
+* [Paper](/files/2024-cgo-latent-idiom-recognition.pdf) · [Artifact](https://zenodo.org/record/8316752) · [Talk slides](/files/2024-cgo-slides.pdf)
+
 Accelerating programs is typically done by recognizing code idioms matching high-performance libraries or hardware interfaces.
 However, recognizing such idioms automatically is challenging.
 The idiom recognition machinery is difficult to write and requires expert knowledge.
