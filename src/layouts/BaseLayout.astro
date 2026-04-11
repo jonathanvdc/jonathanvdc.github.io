@@ -1,0 +1,39 @@
+---
+import Header from '../components/Header.astro';
+import AuthorSidebar from '../components/AuthorSidebar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/site.css';
+
+const {
+  title = 'Jonathan Van der Cruysse',
+  description = 'Compiler engineer specializing in optimizations, IR design, and equality saturation',
+  showSidebar = true
+} = Astro.props;
+
+const pageTitle = title === 'Jonathan Van der Cruysse'
+  ? title
+  : `${title} | Jonathan Van der Cruysse`;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+    <link rel="icon" href="/images/site-logo.png" />
+  </head>
+  <body>
+    <div class="shell">
+      <Header />
+      <main class:list={['page-grid', !showSidebar && 'page-grid--single']}>
+        {showSidebar && <AuthorSidebar />}
+        <section class="content-panel">
+          <slot />
+        </section>
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

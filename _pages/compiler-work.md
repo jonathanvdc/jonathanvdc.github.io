@@ -1,5 +1,4 @@
 ---
-layout: single
 title: "Compiler Work"
 permalink: /compiler-work/
 author_profile: true

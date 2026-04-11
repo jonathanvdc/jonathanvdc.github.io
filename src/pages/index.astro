@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AboutContent, { frontmatter } from '../../_pages/about.md';
+---
+
+<BaseLayout title="Jonathan Van der Cruysse" description={frontmatter.excerpt}>
+  <article class="article">
+    <p class="eyebrow">Compilers · IRs · Equality Saturation</p>
+    <h1>Compiler engineer building practical optimization systems.</h1>
+    <p class="dek">
+      I work on compiler infrastructure for accelerators, FPGAs, managed runtimes,
+      and MLIR tooling, with an emphasis on IR design and equality saturation.
+    </p>
+    <AboutContent />
+  </article>
+</BaseLayout>

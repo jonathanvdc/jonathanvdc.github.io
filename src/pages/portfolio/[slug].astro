@@ -1,0 +1,20 @@
+---
+import MarkdownLayout from '../../layouts/MarkdownLayout.astro';
+import { entriesFromGlob } from '../../lib/content.js';
+
+export function getStaticPaths() {
+  const entries = entriesFromGlob(
+    'portfolio',
+    import.meta.glob('../../../_portfolio/*.md', { eager: true })
+  );
+
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+const { entry } = Astro.props;
+---
+
+<MarkdownLayout entry={entry} eyebrow="Compiler Work" />

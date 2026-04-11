@@ -1,0 +1,398 @@
+:root {
+  --ink: #18251f;
+  --muted: #617068;
+  --paper: #fffdf7;
+  --paper-soft: #f4efe3;
+  --line: #ded4bf;
+  --accent: #0f6655;
+  --accent-dark: #063f35;
+  --accent-soft: #d8efe7;
+  --gold: #b8792c;
+  --shadow: 0 24px 70px rgba(34, 43, 36, 0.12);
+  --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+  --sans: "Avenir Next", Avenir, "Segoe UI", Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(circle at top left, rgba(184, 121, 44, 0.16), transparent 34rem),
+    linear-gradient(135deg, #f8f2e5 0%, #eef5ed 54%, #fdfaf1 100%);
+  color: var(--ink);
+  font-family: var(--serif);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent-dark);
+  text-decoration-color: rgba(15, 102, 85, 0.28);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+a:hover {
+  color: var(--gold);
+}
+
+.shell {
+  margin: 0 auto;
+  max-width: 1180px;
+  padding: 24px;
+}
+
+.site-header,
+.site-footer,
+.content-panel,
+.author-card {
+  backdrop-filter: blur(14px);
+  background: rgba(255, 253, 247, 0.78);
+  border: 1px solid rgba(222, 212, 191, 0.84);
+  box-shadow: var(--shadow);
+}
+
+.site-header {
+  align-items: center;
+  border-radius: 999px;
+  display: flex;
+  gap: 24px;
+  justify-content: space-between;
+  padding: 12px 14px 12px 18px;
+}
+
+.brand {
+  align-items: center;
+  color: var(--ink);
+  display: inline-flex;
+  font-family: var(--sans);
+  font-weight: 700;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-mark {
+  background: var(--accent-dark);
+  border-radius: 999px;
+  color: var(--paper);
+  display: inline-grid;
+  font-size: 0.78rem;
+  height: 40px;
+  letter-spacing: 0.08em;
+  place-items: center;
+  text-transform: uppercase;
+  width: 40px;
+}
+
+.brand-text {
+  letter-spacing: -0.02em;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+
+.nav a {
+  border-radius: 999px;
+  color: var(--muted);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  padding: 9px 13px;
+  text-decoration: none;
+}
+
+.nav a[aria-current="page"],
+.nav a:hover {
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+}
+
+.page-grid {
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 280px minmax(0, 1fr);
+  margin-top: 28px;
+}
+
+.page-grid--single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.author-card,
+.content-panel {
+  border-radius: 28px;
+}
+
+.author-card {
+  align-self: start;
+  padding: 22px;
+  position: sticky;
+  top: 24px;
+}
+
+.author-card img {
+  aspect-ratio: 1;
+  border-radius: 24px;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.author-card h2 {
+  font-size: 1.3rem;
+  line-height: 1.08;
+  margin: 8px 0;
+}
+
+.author-card p {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.contact-list {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+
+.contact-list a,
+.button {
+  border: 1px solid rgba(15, 102, 85, 0.22);
+  border-radius: 999px;
+  display: inline-flex;
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  justify-content: center;
+  padding: 10px 14px;
+  text-decoration: none;
+}
+
+.contact-list a {
+  background: rgba(216, 239, 231, 0.52);
+  width: 100%;
+}
+
+.content-panel {
+  min-width: 0;
+  padding: clamp(28px, 5vw, 62px);
+}
+
+.article {
+  font-size: 1.08rem;
+  line-height: 1.75;
+  max-width: 820px;
+}
+
+.article h1 {
+  font-size: clamp(2.3rem, 6vw, 4.5rem);
+  letter-spacing: -0.065em;
+  line-height: 0.95;
+  margin: 0 0 18px;
+}
+
+.article h1:not(:first-child) {
+  font-size: clamp(1.65rem, 4vw, 2.45rem);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  margin-top: 2.1em;
+}
+
+.article h2,
+.article h3 {
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-top: 2.1em;
+}
+
+.article h2 {
+  font-size: clamp(1.65rem, 4vw, 2.45rem);
+}
+
+.article h3 {
+  font-size: 1.35rem;
+}
+
+.article p,
+.article li {
+  color: #2c3933;
+}
+
+.article ul {
+  padding-left: 1.2rem;
+}
+
+.article li + li {
+  margin-top: 0.38rem;
+}
+
+.eyebrow,
+.metadata,
+.authors {
+  font-family: var(--sans);
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+}
+
+.metadata,
+.authors,
+.dek {
+  color: var(--muted);
+}
+
+.metadata {
+  font-size: 0.95rem;
+  margin: -4px 0 18px;
+}
+
+.authors {
+  color: var(--accent-dark);
+  font-weight: 700;
+  margin: -4px 0 8px;
+}
+
+.dek {
+  border-left: 4px solid var(--accent);
+  font-size: 1.18rem;
+  margin: 18px 0 26px;
+  padding-left: 18px;
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 18px 0 28px;
+}
+
+.button {
+  background: var(--accent-dark);
+  color: var(--paper);
+}
+
+.button:hover {
+  background: var(--gold);
+  color: var(--paper);
+}
+
+.button--secondary {
+  background: transparent;
+  color: var(--accent-dark);
+}
+
+.collection-list {
+  display: grid;
+  gap: 18px;
+  list-style: none;
+  margin: 34px 0 0;
+  padding: 0;
+}
+
+.collection-card {
+  background: rgba(244, 239, 227, 0.62);
+  border: 1px solid rgba(222, 212, 191, 0.76);
+  border-radius: 22px;
+  padding: 20px;
+}
+
+.collection-card h2 {
+  font-size: 1.45rem;
+  line-height: 1.1;
+  margin: 0 0 8px;
+}
+
+.collection-card p {
+  margin: 0;
+}
+
+.site-footer {
+  border-radius: 24px;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  gap: 12px;
+  justify-content: space-between;
+  margin-top: 28px;
+  padding: 18px 22px;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (max-width: 860px) {
+  .shell {
+    padding: 14px;
+  }
+
+  .site-header {
+    align-items: flex-start;
+    border-radius: 24px;
+    flex-direction: column;
+  }
+
+  .nav {
+    justify-content: flex-start;
+  }
+
+  .page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .author-card {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 112px minmax(0, 1fr);
+    position: static;
+  }
+
+  .author-card img {
+    border-radius: 18px;
+  }
+
+  .contact-list {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .brand-text {
+    display: none;
+  }
+
+  .content-panel {
+    padding: 24px;
+  }
+
+  .author-card {
+    grid-template-columns: 1fr;
+  }
+
+  .author-card img {
+    max-width: 180px;
+  }
+
+  .contact-list {
+    grid-template-columns: 1fr;
+  }
+}

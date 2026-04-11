@@ -1,0 +1,27 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { byDateDesc, entriesFromGlob, formatDate } from '../../lib/content.js';
+
+const teaching = entriesFromGlob(
+  'teaching',
+  import.meta.glob('../../../_teaching/*.md', { eager: true })
+).sort(byDateDesc);
+---
+
+<BaseLayout title="Teaching" description="Teaching assistant and instructional work.">
+  <article class="article">
+    <p class="eyebrow">Teaching</p>
+    <h1>Teaching</h1>
+    <p class="dek">Courses and instructional roles across compiler construction, programming languages, algorithms, and software design.</p>
+    <ol class="collection-list">
+      {teaching.map((entry) => (
+        <li class="collection-card">
+          <h2><a href={entry.url}>{entry.frontmatter.title}</a></h2>
+          <p class="metadata">
+            {[entry.frontmatter.type, entry.frontmatter.terms, entry.frontmatter.venue, formatDate(entry.frontmatter.date)].filter(Boolean).join(' · ')}
+          </p>
+        </li>
+      ))}
+    </ol>
+  </article>
+</BaseLayout>
