@@ -1,28 +1,46 @@
 ---
 permalink: /
 title: "About"
-excerpt: "About me"
+excerpt: "Compiler engineer specializing in optimizations, IR design, and equality saturation"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
 
-I am completing a PhD at [McGill University's](https://www.mcgill.ca/) [School of Computer Science](https://www.cs.mcgill.ca/) and I am affiliated with [Mila](https://mila.quebec).
-My supervisor is [Christophe Dubach](https://cdubach.bitbucket.io).
-I design compiler systems that make advanced program optimizations practical, with a focus on parallelism, hardware efficiency, and extensible design.
+I am a compiler engineer and PhD candidate at [McGill University's](https://www.mcgill.ca/) [School of Computer Science](https://www.cs.mcgill.ca/), affiliated with [Mila](https://mila.quebec).
+I specialize in compiler optimizations, Intermediate Representation (IR) design, and equality saturation, with a focus on making advanced program transformations practical for real systems.
 
-My research interests span optimizing compilers, equality saturation and emerging hardware.
-The intersection of these interests is the topic I pursue in the context of my PhD.
-Specifically, I am researching the applications of equality saturation to solve code generation challenges for Machine Learning (ML) accelerators and Field-Programmable Gate Arrays (FPGAs).
+I build compiler infrastructure for ML accelerators, Field-Programmable Gate Arrays (FPGAs), managed runtimes, and MLIR tooling.
+My recent work includes [Foresight](/portfolio/2026-foresight), a parallel equality saturation engine published at CC 2026, and [SkeleShare](/publication/2026-cgo-skeleshare), a CGO 2026 system for automated FPGA resource sharing.
 
-ML accelerators and FPGAs have tremendous compute power but are held back by unique programmability challenges that require dedicated solutions.
-The solutions I propose in my work include latent idiom recognition for ML acceleration libraries and automatic partitioning and resource sharing for FPGA designs.
-These solutions rely on functional program representations and equality saturation, a novel and increasingly popular technique in compilers.
-
-Due to its relative recency, the broader field of equality saturation features a range of open problems, notably scalability and Intermediate Representation (IR) design.
-IR design is a common thread throughout my work.
-The scalability challenge is also a topic I am exploring in my research.
-
-My work has resulted in multiple peer-reviewed publications at top compiler venues (CGO, CC) and in open-source compiler infrastructure.
 I am currently exploring Canadian research and engineering roles in compilers, programming languages, and systems.
+
+[Resume](/cv/) · [GitHub](https://github.com/jonathanvdc) · [Publications](/publications/) · [Email](mailto:jonathan.vandercruysse@mail.mcgill.ca)
+
+Selected Compiler Work
+======
+
+* [Foresight](/portfolio/2026-foresight): a parallel, extensible equality saturation library in Scala with programmable saturation strategies, generalized metadata, and deferred parallel rewriting.
+  Foresight achieves up to 16x speedups on a reimplementation of latent idiom recognition and is described in our [CC 2026 paper](/publication/2026-cc-foresight).
+* [SkeleShare](/publication/2026-cgo-skeleshare): an equality-saturation-based system for automatic hardware resource sharing in FPGA designs.
+  It combines algorithmic skeletons and solver-based extraction to match or exceed expert manual designs on neural-network and image-processing workloads.
+* [Latent Idiom Recognition](/publication/2024-cgo-latent-idiom-recognition): a CGO 2024 approach for recognizing BLAS and PyTorch idioms using a minimalist functional array IR and equality saturation.
+  The generated C implementations achieve a 1.46x geometric mean speedup over reference kernels.
+* [Flame](/projects/2018-flame): an SSA-based compiler framework for managed languages.
+  Flame reads and optimizes .NET programs and lowers managed-language code toward targets such as LLVM IR and WebAssembly.
+* [Modelverse JIT](/portfolio/2017-modelverse-jit-compiler): a tiered just-in-time compiler for graph-based bytecode that reaches roughly 37x speedups over the previous virtual machine.
+
+What I Am Looking For
+======
+
+I am especially interested in roles involving optimizing compilers, IR design, MLIR/LLVM infrastructure, equality saturation, language runtimes, hardware-aware compilation, and performance engineering.
+
+Research Background
+======
+
+My PhD is supervised by [Christophe Dubach](https://cdubach.bitbucket.io).
+I study how equality saturation can solve code generation and optimization challenges for ML accelerators and FPGAs.
+Across this work, IR design is the common thread: I use functional program representations, rewrite systems, and extensible compiler infrastructure to expose optimization opportunities that are difficult to capture with brittle hand-written recognizers.
+
+My work has resulted in peer-reviewed publications at top compiler venues, including CGO and CC, and in open-source compiler infrastructure.
