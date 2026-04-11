@@ -8,7 +8,7 @@ I designed and implemented [Foresight](https://github.com/jonathanvdc/foresight)
 
 ## Design goals
 
-Foresight's architecture is guided by three core ideas that address the limitaitons of prior approaches: parallel rewriting, saturation strategies and generalized metadata.
+Foresight's architecture is guided by three core ideas that address the limitations of prior approaches: parallel rewriting, saturation strategies and generalized metadata.
 
 ### Parallel rewriting as a first-class concern
 

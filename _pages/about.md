@@ -22,7 +22,7 @@ These solutions rely on functional program representations and equality saturati
 
 Due to its relative recency, the broader field of equality saturation features a range of open problems, notably scalability and Intermediate Representation (IR) design.
 IR design is a common thread throughout my work.
-The scability challenge is also a topic I am exploring in my research.
+The scalability challenge is also a topic I am exploring in my research.
 
 My work has resulted in multiple peer-reviewed publications at top compiler venues (CGO, CC) and in open-source compiler infrastructure.
 I am currently exploring Canadian research and engineering roles in compilers, programming languages, and systems.
