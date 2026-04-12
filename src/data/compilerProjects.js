@@ -169,9 +169,9 @@ export const compilerProjects = [
       { label: 'Source', href: 'https://github.com/nokia/ts-serialize-closures' }
     ],
     image: {
-      src: '/images/teaser-2019-flashfreeze.png',
+      src: '/images/teaser-flashfreeze-nokia.svg',
       alt: 'FlashFreeze JavaScript function serialization teaser',
-      from: '#f0c36dff',
+      from: '#005affff',
       to: '#113c59ff'
     }
   }
