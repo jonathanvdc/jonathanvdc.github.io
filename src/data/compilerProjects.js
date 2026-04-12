@@ -152,5 +152,27 @@ export const compilerProjects = [
       from: '#d60000ff',
       to: '#971212ff'
     }
+  },
+  {
+    id: 'flashfreeze',
+    title: 'FlashFreeze',
+    subtitle: 'JavaScript function serialization',
+    href: '/compiler-work/flashfreeze/',
+    venue: 'META 2019',
+    impact: '3% Octane overhead vs 76% prior work',
+    role: 'Designed the capture-list instrumentation and serializer',
+    blurb:
+      'Low-overhead JavaScript instrumentation for serializing functions, closures, and captured variables by making lexical environments queryable.',
+    tech: ['JavaScript', 'TypeScript', 'source rewriting', 'closures', 'serialization'],
+    links: [
+      { label: 'Paper', href: '/files/2019-flashfreeze.pdf' },
+      { label: 'Source', href: 'https://github.com/nokia/ts-serialize-closures' }
+    ],
+    image: {
+      src: '/images/teaser-2019-flashfreeze.png',
+      alt: 'FlashFreeze JavaScript function serialization teaser',
+      from: '#f0c36dff',
+      to: '#113c59ff'
+    }
   }
 ];
