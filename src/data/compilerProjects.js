@@ -74,7 +74,7 @@ export const compilerProjects = [
     subtitle: 'Managed-language compiler framework',
     href: '/projects/2018-flame/',
     venue: 'Open source',
-    impact: 'SSA optimizer with LLVM and Wasm-oriented lowering',
+    impact: 'SSA optimizer with LLVM and Wasm back ends',
     role: 'Designed compiler IR, optimizations, and back ends',
     blurb:
       'A reusable SSA-based compiler framework for managed languages, whole-program optimization, and lowering from .NET-style programs.',
