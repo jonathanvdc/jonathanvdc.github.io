@@ -1,27 +1,38 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArchiveEntryCard from '../../components/ArchiveEntryCard.astro';
+import ArchiveHero from '../../components/ArchiveHero.astro';
 import { byDateDesc, entriesFromGlob, formatDate } from '../../lib/content.js';
 
 const teaching = entriesFromGlob(
   'teaching',
   import.meta.glob('../../../_teaching/*.md', { eager: true })
 ).sort(byDateDesc);
+
+const teachingYears = teaching
+  .map((entry) => new Date(entry.frontmatter.date).getUTCFullYear())
+  .filter(Boolean);
+const teachingSpan = `${Math.min(...teachingYears)}-${Math.max(...teachingYears)}`;
 ---
 
-<BaseLayout title="Teaching" description="Teaching assistant and instructional work.">
-  <article class="article">
-    <p class="eyebrow">Teaching</p>
-    <h1>Teaching</h1>
-    <p class="dek">Courses and instructional roles across compiler construction, programming languages, algorithms, and software design.</p>
-    <ol class="collection-list">
+<BaseLayout title="Teaching" description="Teaching assistant and instructional work." showSidebar={false}>
+  <section class="archive-page">
+    <ArchiveHero
+      eyebrow="Teaching"
+      title="Teaching"
+      description="Teaching and mentorship across programming, algorithms, software design, programming languages, and compiler construction."
+      stats={[`${teaching.length} course roles`, teachingSpan, 'programming · PL · compilers']}
+      tone="teaching"
+    />
+
+    <ol class="archive-list">
       {teaching.map((entry) => (
-        <li class="collection-card">
-          <h2><a href={entry.url}>{entry.frontmatter.title}</a></h2>
-          <p class="metadata">
-            {[entry.frontmatter.type, entry.frontmatter.terms, entry.frontmatter.venue, formatDate(entry.frontmatter.date)].filter(Boolean).join(' · ')}
-          </p>
-        </li>
+        <ArchiveEntryCard
+          entry={entry}
+          eyebrow={formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}
+          meta={[entry.frontmatter.type, entry.frontmatter.terms, entry.frontmatter.venue, formatDate(entry.frontmatter.date)]}
+        />
       ))}
     </ol>
-  </article>
+  </section>
 </BaseLayout>

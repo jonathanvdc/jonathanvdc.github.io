@@ -1,28 +1,43 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArchiveEntryCard from '../../components/ArchiveEntryCard.astro';
+import ArchiveHero from '../../components/ArchiveHero.astro';
 import { byDateDesc, entriesFromGlob, formatDate } from '../../lib/content.js';
 
 const talks = entriesFromGlob(
   'talks',
   import.meta.glob('../../../_talks/*.md', { eager: true })
 ).sort(byDateDesc);
+
+const locationSummary = 'Sydney · Toronto · Edinburgh · Athens';
 ---
 
-<BaseLayout title="Talks" description="Conference talks, presentations, and invited talks.">
-  <article class="article">
-    <p class="eyebrow">Speaking</p>
-    <h1>Talks</h1>
-    <p class="dek">Conference presentations and talks on compiler optimization, equality saturation, FPGA compilation, and programming language implementation.</p>
-    <ol class="collection-list">
-      {talks.map((entry) => (
-        <li class="collection-card">
-          <h2><a href={entry.url}>{entry.frontmatter.title}</a></h2>
-          <p class="metadata">
-            {[entry.frontmatter.venue, entry.frontmatter.location, formatDate(entry.frontmatter.date)].filter(Boolean).join(' · ')}
-          </p>
-          {entry.frontmatter.excerpt && <p>{entry.frontmatter.excerpt}</p>}
-        </li>
-      ))}
+<BaseLayout title="Talks" description="Conference talks, presentations, and invited talks." showSidebar={false}>
+  <section class="archive-page">
+    <ArchiveHero
+      eyebrow="Speaking"
+      title="Talks"
+      description="Conference talks and workshop presentations on compiler optimization, equality saturation, FPGA compilation, and program representation."
+      stats={[`${talks.length} talks`, 'CGO · CC · CDP · SPLASH', locationSummary]}
+      tone="speaking"
+    />
+
+    <ol class="archive-list">
+      {talks.map((entry) => {
+        const links = [
+          entry.frontmatter.slidesurl && { label: 'Slides', href: entry.frontmatter.slidesurl },
+          entry.frontmatter.paperurl && { label: 'Paper', href: entry.frontmatter.paperurl }
+        ].filter(Boolean);
+
+        return (
+          <ArchiveEntryCard
+            entry={entry}
+            eyebrow={formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}
+            meta={[entry.frontmatter.venue, entry.frontmatter.location, formatDate(entry.frontmatter.date)]}
+            links={links}
+          />
+        );
+      })}
     </ol>
-  </article>
+  </section>
 </BaseLayout>
