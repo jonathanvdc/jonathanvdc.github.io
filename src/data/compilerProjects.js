@@ -29,8 +29,7 @@ export const compilerProjects = [
       'Automates hardware resource allocation and sharing by combining equality saturation, algorithmic skeletons, and solver-based extraction.',
     tech: ['FPGA', 'HLS', 'equality saturation', 'solver extraction'],
     links: [
-      { label: 'Paper', href: '/publication/2026-cgo-skeleshare/' },
-      { label: 'PDF', href: '/files/2026-cgo-skeleshare.pdf' }
+      { label: 'Paper', href: '/publication/2026-cgo-skeleshare/' }
     ],
     visual: 'fpga',
     featured: true
@@ -99,7 +98,7 @@ export const compilerProjects = [
     tech: ['Julia', 'GPU runtime', 'LLVM IR', 'garbage collection'],
     links: [
       { label: 'Project', href: '/portfolio/2019-thesis/' },
-      { label: 'PDF', href: '/files/2019-garbage-collection-abstractions-for-high-level-gpu-languages.pdf' }
+      { label: 'Thesis', href: '/files/2019-garbage-collection-abstractions-for-high-level-gpu-languages.pdf' }
     ],
     visual: 'gpu'
   },
