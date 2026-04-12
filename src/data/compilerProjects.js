@@ -15,9 +15,11 @@ export const compilerProjects = [
       { label: 'Source', href: 'https://github.com/jonathanvdc/foresight' }
     ],
     visual: 'egraph',
-    image: {
-      src: '/images/teaser-2026-foresight.svg',
-      alt: 'Foresight parallel equality saturation teaser illustration'
+    mask: {
+      src: '/images/teaser-2026-foresight-mask.svg',
+      alt: 'Foresight parallel equality saturation teaser silhouette',
+      from: '#0996e9ff',
+      to: '#031868ff'
     },
     featured: true
   },

@@ -6,7 +6,15 @@ const { project } = Astro.props;
   <a class="compiler-card__overlay" href={project.href} aria-label={`Read more about ${project.title}`}></a>
 
   {
-    project.image ? (
+    project.mask ? (
+      <figure
+        class="compiler-card__visual compiler-card__visual--mask"
+        style={`--mask-image: url('${project.mask.src}'); --mask-from: ${project.mask.from}; --mask-to: ${project.mask.to};`}
+      >
+        <div class="compiler-card__mask-art" role="img" aria-label={project.mask.alt}></div>
+        <figcaption>{project.subtitle}</figcaption>
+      </figure>
+    ) : project.image ? (
       <figure class="compiler-card__visual compiler-card__visual--image">
         <img src={project.image.src} alt={project.image.alt} loading="lazy" />
         <figcaption>{project.subtitle}</figcaption>
