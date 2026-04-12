@@ -76,7 +76,7 @@ const pageDescription = primaryEntry?.frontmatter.excerpt ?? project.blurb;
             const metadata = compact([entry.frontmatter.venue, formatDate(entry.frontmatter.date)]);
 
             return (
-              <section class="work-evidence work-evidence--publication">
+              <section id={`publication-${entry.slug}`} class="work-evidence work-evidence--publication">
                 <div class="work-evidence__title-row">
                   <div>
                     <p class="work-evidence__eyebrow">{entry.frontmatter.venue_abbreviation} {formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}</p>
@@ -99,6 +99,19 @@ const pageDescription = primaryEntry?.frontmatter.excerpt ?? project.blurb;
                   {entry.frontmatter.paperurl && <a class="button" href={entry.frontmatter.paperurl}>Paper PDF</a>}
                   {entry.frontmatter.slidesurl && <a class="button button--secondary" href={entry.frontmatter.slidesurl}>Slides</a>}
                 </div>
+                {entry.frontmatter.bibtex && (
+                  <details class="citation-card">
+                    <summary>
+                      <span>BibTeX citation</span>
+                    </summary>
+                    <div class="citation-card__body">
+                      <button class="citation-card__copy" type="button" data-copy-citation>
+                        Copy
+                      </button>
+                      <pre><code>{entry.frontmatter.bibtex}</code></pre>
+                    </div>
+                  </details>
+                )}
               </section>
             );
           })}
@@ -114,7 +127,7 @@ const pageDescription = primaryEntry?.frontmatter.excerpt ?? project.blurb;
         </div>
         <div class="work-talk-list">
           {talks.map((entry) => (
-            <section class="work-talk">
+            <section id={`talk-${entry.slug}`} class="work-talk">
               <p class="work-evidence__eyebrow">{entry.frontmatter.venue_abbreviation} {formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}</p>
               <h3>{entry.frontmatter.title}</h3>
               <p class="metadata">{compact([entry.frontmatter.venue, entry.frontmatter.location, formatDate(entry.frontmatter.date)]).join(' · ')}</p>
@@ -149,3 +162,21 @@ const pageDescription = primaryEntry?.frontmatter.excerpt ?? project.blurb;
     )}
   </article>
 </BaseLayout>
+
+<script>
+  document.querySelectorAll('[data-copy-citation]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const citation = button.closest('.citation-card')?.querySelector('code')?.textContent?.trim();
+      if (!citation) {
+        return;
+      }
+
+      await navigator.clipboard.writeText(citation);
+      const originalLabel = button.textContent;
+      button.textContent = 'Copied';
+      window.setTimeout(() => {
+        button.textContent = originalLabel;
+      }, 1400);
+    });
+  });
+</script>

@@ -16,7 +16,8 @@ export function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const canonicalWorkUrl = entry.frontmatter.work_slug && `/compiler-work/${entry.frontmatter.work_slug}/`;
+const canonicalWorkUrl =
+  entry.frontmatter.work_slug && `/compiler-work/${entry.frontmatter.work_slug}/#talk-${entry.slug}`;
 ---
 
 {canonicalWorkUrl ? <RedirectPage to={canonicalWorkUrl} /> : <MarkdownLayout entry={entry} eyebrow="Talk" />}

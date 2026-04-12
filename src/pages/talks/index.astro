@@ -25,12 +25,12 @@ const locationSummary = 'Sydney · Toronto · Edinburgh · Athens';
     <ol class="archive-list">
       {talks.map((entry) => {
         const canonicalHref = entry.frontmatter.work_slug
-          ? `/compiler-work/${entry.frontmatter.work_slug}/`
+          ? `/compiler-work/${entry.frontmatter.work_slug}/#talk-${entry.slug}`
           : entry.url;
         const links = [
           entry.frontmatter.slidesurl && { label: 'Slides', href: entry.frontmatter.slidesurl },
           entry.frontmatter.paperurl && { label: 'Paper', href: entry.frontmatter.paperurl },
-          entry.frontmatter.work_slug && { label: 'Project', href: canonicalHref }
+          entry.frontmatter.work_slug && { label: 'Work page', href: canonicalHref }
         ].filter(Boolean);
 
         return (

@@ -18,7 +18,8 @@ export function getStaticPaths() {
 
 const { entry } = Astro.props;
 const badges = badgesFromKeys(entry.frontmatter.artifact_badges);
-const canonicalWorkUrl = entry.frontmatter.work_slug && `/compiler-work/${entry.frontmatter.work_slug}/`;
+const canonicalWorkUrl =
+  entry.frontmatter.work_slug && `/compiler-work/${entry.frontmatter.work_slug}/#publication-${entry.slug}`;
 ---
 
 {canonicalWorkUrl ? <RedirectPage to={canonicalWorkUrl} /> : <MarkdownLayout entry={entry} eyebrow="Publication" badges={badges} />}
