@@ -2,6 +2,7 @@
 title: "Garbage Collection for Julia on GPUs"
 excerpt: "I created the first GPU garbage collector for the Julia language!"
 collection: portfolio
+work_slug: julia-gpu-gc
 ---
 
 I designed and implemented a garbage collector (GC) for the [CUDAnative](https://github.com/JuliaGPU/CUDAnative.jl) Julia package.

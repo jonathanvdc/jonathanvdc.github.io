@@ -2,6 +2,7 @@
 title: "MLIR.NET"
 excerpt: "Strongly typed MLIR infrastructure for .NET, with generated dialect APIs from TableGen/ODS."
 collection: projects
+work_slug: mlir-net
 ---
 
 [MLIR.NET](https://github.com/jonathanvdc/MLIR.NET) is a strongly typed C# representation of [MLIR](https://mlir.llvm.org/).

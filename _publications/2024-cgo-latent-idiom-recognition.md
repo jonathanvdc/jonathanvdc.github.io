@@ -3,6 +3,7 @@ title: "Latent Idiom Recognition for a Minimalist Functional Array Language usin
 authors: "Jonathan Van der Cruysse, Christophe Dubach"
 collection: publications
 permalink: /publication/2024-cgo-latent-idiom-recognition
+work_slug: latent-idiom-recognition
 excerpt: 'An idiom recognition approach rooted in equality saturation'
 date: 2024-03-02
 venue: 'Proceedings of the 22nd ACM/IEEE International Symposium on Code Generation and Optimization (CGO)'

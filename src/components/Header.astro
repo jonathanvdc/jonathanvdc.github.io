@@ -7,6 +7,7 @@ const isHome = currentPath === '/';
 const crumbTitle = title === 'Jonathan Van der Cruysse' ? '' : title;
 
 const parentCrumbs = [
+  { match: /^\/compiler-work\/.+/, href: '/compiler-work/', label: 'Compiler Work' },
   { match: /^\/publication\//, href: '/publications/', label: 'Publications' },
   { match: /^\/talks\/.+/, href: '/talks/', label: 'Talks' },
   { match: /^\/teaching\/.+/, href: '/teaching/', label: 'Teaching' },

@@ -24,14 +24,19 @@ const locationSummary = 'Sydney · Toronto · Edinburgh · Athens';
 
     <ol class="archive-list">
       {talks.map((entry) => {
+        const canonicalHref = entry.frontmatter.work_slug
+          ? `/compiler-work/${entry.frontmatter.work_slug}/`
+          : entry.url;
         const links = [
           entry.frontmatter.slidesurl && { label: 'Slides', href: entry.frontmatter.slidesurl },
-          entry.frontmatter.paperurl && { label: 'Paper', href: entry.frontmatter.paperurl }
+          entry.frontmatter.paperurl && { label: 'Paper', href: entry.frontmatter.paperurl },
+          entry.frontmatter.work_slug && { label: 'Project', href: canonicalHref }
         ].filter(Boolean);
 
         return (
           <ArchiveEntryCard
             entry={entry}
+            href={canonicalHref}
             eyebrow={[
               entry.frontmatter.venue_abbreviation,
               formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })

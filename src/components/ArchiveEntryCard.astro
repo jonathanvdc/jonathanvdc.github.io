@@ -1,17 +1,17 @@
 ---
-const { entry, meta = [], eyebrow, links = [], badges = [] } = Astro.props;
+const { entry, href = entry.url, meta = [], eyebrow, links = [], badges = [] } = Astro.props;
 const { frontmatter } = entry;
 const railItems = Array.isArray(eyebrow) ? eyebrow.filter(Boolean) : [eyebrow].filter(Boolean);
 ---
 
 <li class="archive-card">
-  <a class="archive-card__overlay" href={entry.url} aria-label={`Read more about ${frontmatter.title}`}></a>
+  <a class="archive-card__overlay" href={href} aria-label={`Read more about ${frontmatter.title}`}></a>
   <div class="archive-card__rail">
     {railItems.map((item) => <span>{item}</span>)}
   </div>
   <div class="archive-card__body">
     <div class="archive-card__title-row">
-      <h2><a href={entry.url}>{frontmatter.title}</a></h2>
+      <h2><a href={href}>{frontmatter.title}</a></h2>
       {badges.length > 0 && (
         <ul class="artifact-badges" aria-label="Artifact evaluation badges">
           {badges.map((badge) => (

@@ -3,7 +3,7 @@ export const compilerProjects = [
     id: 'foresight',
     title: 'Foresight',
     subtitle: 'Parallel equality saturation',
-    href: '/portfolio/2026-foresight/',
+    href: '/compiler-work/foresight/',
     venue: 'CC 2026',
     impact: 'Up to 16x speedup',
     role: 'Designed and implemented the core system',
@@ -11,7 +11,7 @@ export const compilerProjects = [
       'A parallel, extensible equality saturation library with programmable saturation strategies, generalized e-graph metadata, and deferred parallel rewriting.',
     tech: ['Scala', 'e-graphs', 'parallel rewriting', 'IR metadata'],
     links: [
-      { label: 'Paper', href: '/publication/2026-cc-foresight/' },
+      { label: 'Paper', href: '/files/2026-cc-foresight.pdf' },
       { label: 'Source', href: 'https://github.com/jonathanvdc/foresight' }
     ],
     visual: 'egraph',
@@ -27,7 +27,7 @@ export const compilerProjects = [
     id: 'skeleshare',
     title: 'SkeleShare',
     subtitle: 'FPGA resource sharing',
-    href: '/publication/2026-cgo-skeleshare/',
+    href: '/compiler-work/skeleshare/',
     venue: 'CGO 2026',
     impact: 'Matches or exceeds expert designs',
     role: 'Equality-saturation system for hardware design search',
@@ -35,7 +35,7 @@ export const compilerProjects = [
       'Automates hardware resource allocation and sharing by combining equality saturation, algorithmic skeletons, and solver-based extraction.',
     tech: ['FPGA', 'HLS', 'equality saturation', 'solver extraction'],
     links: [
-      { label: 'Paper', href: '/publication/2026-cgo-skeleshare/' }
+      { label: 'Paper', href: '/files/2026-cgo-skeleshare.pdf' }
     ],
     visual: 'fpga',
     mask: {
@@ -50,7 +50,7 @@ export const compilerProjects = [
     id: 'latent-idiom-recognition',
     title: 'Latent Idiom Recognition',
     subtitle: 'Semantic library-call discovery',
-    href: '/publication/2024-cgo-latent-idiom-recognition/',
+    href: '/compiler-work/latent-idiom-recognition/',
     venue: 'CGO 2024',
     impact: '1.46x geometric mean speedup',
     role: 'Functional array IR and equality-saturation recognizer',
@@ -58,7 +58,7 @@ export const compilerProjects = [
       'Recognizes hidden BLAS and PyTorch idioms by representing programs and idioms in a minimalist functional array language.',
     tech: ['array IRs', 'BLAS', 'PyTorch', 'optimization search'],
     links: [
-      { label: 'Paper', href: '/publication/2024-cgo-latent-idiom-recognition/' },
+      { label: 'Paper', href: '/files/2024-cgo-latent-idiom-recognition.pdf' },
       { label: 'Slides', href: '/files/2024-cgo-slides.pdf' }
     ],
     mask: {
@@ -72,7 +72,7 @@ export const compilerProjects = [
     id: 'flame',
     title: 'Flame',
     subtitle: 'Managed-language compiler framework',
-    href: '/projects/2018-flame/',
+    href: '/compiler-work/flame/',
     venue: 'Open source',
     impact: 'SSA optimizer with LLVM and Wasm back ends',
     role: 'Designed compiler IR, optimizations, and back ends',
@@ -80,7 +80,6 @@ export const compilerProjects = [
       'A reusable SSA-based compiler framework for managed languages, whole-program optimization, and lowering from .NET-style programs.',
     tech: ['C#', '.NET IL', 'SSA', 'LLVM IR', 'WebAssembly'],
     links: [
-      { label: 'Project', href: '/projects/2018-flame/' },
       { label: 'Source', href: 'https://github.com/jonathanvdc/flame' }
     ],
     mask: {
@@ -94,7 +93,7 @@ export const compilerProjects = [
     id: 'mlir-net',
     title: 'MLIR.NET',
     subtitle: 'Typed MLIR infrastructure for .NET',
-    href: '/projects/2026-mlir-net/',
+    href: '/compiler-work/mlir-net/',
     venue: 'Open source',
     impact: 'TableGen-driven typed APIs',
     role: 'Building parser, printer, IR model, and generated dialect APIs',
@@ -102,7 +101,6 @@ export const compilerProjects = [
       'Models MLIR operations, regions, attributes, and types in C#, then reconstructs ODS to generate safer dialect-specific APIs.',
     tech: ['C#', 'MLIR', 'TableGen', 'ODS', 'typed IRs'],
     links: [
-      { label: 'Project', href: '/projects/2026-mlir-net/' },
       { label: 'Source', href: 'https://github.com/jonathanvdc/MLIR.NET' }
     ],
     image: {
@@ -116,7 +114,7 @@ export const compilerProjects = [
     id: 'julia-gpu-gc',
     title: 'Julia GPU Garbage Collection',
     subtitle: 'Runtime support for GPU languages',
-    href: '/portfolio/2019-thesis/',
+    href: '/compiler-work/julia-gpu-gc/',
     venue: 'Master\'s thesis',
     impact: '2x faster than CUDA malloc baseline',
     role: 'Implemented a conservative mark-and-sweep GPU GC',
@@ -124,7 +122,6 @@ export const compilerProjects = [
       'Introduced compiler/runtime abstraction layers for reusable GPU garbage collection in CUDAnative.jl and Julia compiler infrastructure.',
     tech: ['Julia', 'GPU runtime', 'LLVM IR', 'garbage collection'],
     links: [
-      { label: 'Project', href: '/portfolio/2019-thesis/' },
       { label: 'Thesis', href: '/files/2019-garbage-collection-abstractions-for-high-level-gpu-languages.pdf' }
     ],
     visual: 'gpu',
@@ -139,7 +136,7 @@ export const compilerProjects = [
     id: 'modelverse-jit',
     title: 'Modelverse JIT',
     subtitle: 'Tiered compilation for graph bytecode',
-    href: '/portfolio/2017-modelverse-jit-compiler/',
+    href: '/compiler-work/modelverse-jit/',
     venue: 'Research project',
     impact: '37x speedup over reference implementation',
     role: 'Built interpreter, baseline JIT, and optimizing SSA JIT',
@@ -147,7 +144,6 @@ export const compilerProjects = [
       'A tiered just-in-time compiler for graph-based bytecode, moving hot programs from interpretation to SSA-based optimization.',
     tech: ['JIT', 'SSA', 'bytecode', 'runtime optimization'],
     links: [
-      { label: 'Project', href: '/portfolio/2017-modelverse-jit-compiler/' },
       { label: 'Report', href: '/files/2017-modelverse-jit-report.pdf' }
     ],
     mask: {

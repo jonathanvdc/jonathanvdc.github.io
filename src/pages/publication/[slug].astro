@@ -1,5 +1,6 @@
 ---
 import MarkdownLayout from '../../layouts/MarkdownLayout.astro';
+import RedirectPage from '../../components/RedirectPage.astro';
 import { badgesFromKeys } from '../../lib/artifactBadges.js';
 import { entriesFromGlob } from '../../lib/content.js';
 
@@ -17,6 +18,7 @@ export function getStaticPaths() {
 
 const { entry } = Astro.props;
 const badges = badgesFromKeys(entry.frontmatter.artifact_badges);
+const canonicalWorkUrl = entry.frontmatter.work_slug && `/compiler-work/${entry.frontmatter.work_slug}/`;
 ---
 
-<MarkdownLayout entry={entry} eyebrow="Publication" badges={badges} />
+{canonicalWorkUrl ? <RedirectPage to={canonicalWorkUrl} /> : <MarkdownLayout entry={entry} eyebrow="Publication" badges={badges} />}

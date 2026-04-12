@@ -2,6 +2,7 @@
 title: "Flame"
 excerpt: "An SSA-based compiler framework for managed languages, with optimization passes and LLVM/WebAssembly-oriented back ends."
 collection: projects
+work_slug: flame
 ---
 
 [Flame](https://github.com/jonathanvdc/flame) is an SSA-based compiler framework for managed languages.

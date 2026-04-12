@@ -3,10 +3,13 @@ title: "Latent Idiom Recognition for a Minimalist Functional Array Language usin
 collection: talks
 type: "Talk"
 permalink: /talks/2024-cgo-latent-idiom-recognition
+work_slug: latent-idiom-recognition
 date: 2024-03-05
 venue: '22nd ACM/IEEE International Symposium on Code Generation and Optimization'
 venue_abbreviation: CGO
 location: "Edinburgh, United Kingdom"
+paperurl: /files/2024-cgo-latent-idiom-recognition.pdf
+slidesurl: /files/2024-cgo-slides.pdf
 ---
 
-I presented [my paper on latent idiom recognition](/publication/2024-cgo-latent-idiom-recognition) at [CGO 2024](https://conf.researchr.org/home/cgo-2024). The slide deck for this presentation is available as [PPTX](/files/2024-cgo-slides.pptx) and as [PDF](/files/2024-cgo-slides.pdf).
+I presented [my paper on latent idiom recognition](/compiler-work/latent-idiom-recognition/) at [CGO 2024](https://conf.researchr.org/home/cgo-2024). The slide deck for this presentation is available as [PPTX](/files/2024-cgo-slides.pptx) and as [PDF](/files/2024-cgo-slides.pdf).

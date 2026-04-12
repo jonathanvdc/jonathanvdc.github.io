@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { badgesFromKeys } from '../../lib/artifactBadges.js';
+import { byDateDesc, compact, entriesFromGlob, formatDate } from '../../lib/content.js';
+import { compilerProjects } from '../../data/compilerProjects.js';
+
+export function getStaticPaths() {
+  return compilerProjects.map((project) => ({
+    params: { slug: project.id },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+
+const publications = entriesFromGlob(
+  'publication',
+  import.meta.glob('../../../_publications/*.md', { eager: true })
+)
+  .filter((entry) => entry.frontmatter.work_slug === project.id)
+  .sort(byDateDesc);
+
+const talks = entriesFromGlob(
+  'talks',
+  import.meta.glob('../../../_talks/*.md', { eager: true })
+)
+  .filter((entry) => entry.frontmatter.work_slug === project.id)
+  .sort(byDateDesc);
+
+const projectEntries = [
+  ...entriesFromGlob('portfolio', import.meta.glob('../../../_portfolio/*.md', { eager: true })),
+  ...entriesFromGlob('projects', import.meta.glob('../../../_projects/*.md', { eager: true }))
+].filter((entry) => entry.frontmatter.work_slug === project.id);
+
+const primaryEntry = projectEntries[0] ?? publications[0];
+const PrimaryContent = primaryEntry?.Content;
+const pageDescription = primaryEntry?.frontmatter.excerpt ?? project.blurb;
+---
+
+<BaseLayout title={project.title} description={pageDescription} showSidebar={false}>
+  <article class="work-detail">
+    <section class="work-hero">
+      <div>
+        <p class="eyebrow">{project.venue}</p>
+        <h1>{project.title}</h1>
+        <p>{project.blurb}</p>
+        <div class="action-row">
+          {project.links.map((link) => <a class="button button--secondary" href={link.href}>{link.label}</a>)}
+        </div>
+      </div>
+      <dl class="work-hero__facts">
+        <div>
+          <dt>Impact</dt>
+          <dd>{project.impact}</dd>
+        </div>
+        <div>
+          <dt>Role</dt>
+          <dd>{project.role}</dd>
+        </div>
+        <div>
+          <dt>Stack</dt>
+          <dd>{project.tech.join(' · ')}</dd>
+        </div>
+      </dl>
+    </section>
+
+    {publications.length > 0 && (
+      <section class="work-section">
+        <div class="work-section__heading">
+          <p class="eyebrow">Publication</p>
+          <h2>Peer-reviewed paper</h2>
+        </div>
+        <div class="work-evidence-list">
+          {publications.map((entry) => {
+            const badges = badgesFromKeys(entry.frontmatter.artifact_badges);
+            const metadata = compact([entry.frontmatter.venue, formatDate(entry.frontmatter.date)]);
+
+            return (
+              <section class="work-evidence work-evidence--publication">
+                <div class="work-evidence__title-row">
+                  <div>
+                    <p class="work-evidence__eyebrow">{entry.frontmatter.venue_abbreviation} {formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}</p>
+                    <h3>{entry.frontmatter.title}</h3>
+                  </div>
+                  {badges.length > 0 && (
+                    <ul class="artifact-badges" aria-label="Artifact evaluation badges">
+                      {badges.map((badge) => (
+                        <li>
+                          <img src={badge.src} alt={badge.alt} loading="lazy" />
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                {entry.frontmatter.authors && <p class="authors">{entry.frontmatter.authors}</p>}
+                {metadata.length > 0 && <p class="metadata">{metadata.join(' · ')}</p>}
+                {entry.frontmatter.excerpt && <p class="dek">{entry.frontmatter.excerpt}</p>}
+                <div class="action-row">
+                  {entry.frontmatter.paperurl && <a class="button" href={entry.frontmatter.paperurl}>Paper PDF</a>}
+                  {entry.frontmatter.slidesurl && <a class="button button--secondary" href={entry.frontmatter.slidesurl}>Slides</a>}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      </section>
+    )}
+
+    {talks.length > 0 && (
+      <section class="work-section">
+        <div class="work-section__heading">
+          <p class="eyebrow">Talks</p>
+          <h2>Presentations and related material</h2>
+        </div>
+        <div class="work-talk-list">
+          {talks.map((entry) => (
+            <section class="work-talk">
+              <p class="work-evidence__eyebrow">{entry.frontmatter.venue_abbreviation} {formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}</p>
+              <h3>{entry.frontmatter.title}</h3>
+              <p class="metadata">{compact([entry.frontmatter.venue, entry.frontmatter.location, formatDate(entry.frontmatter.date)]).join(' · ')}</p>
+              <div class="archive-card__links">
+                {entry.frontmatter.slidesurl && (
+                  <a href={entry.frontmatter.slidesurl}>
+                    <span>Slides</span>
+                  </a>
+                )}
+                {entry.frontmatter.paperurl && (
+                  <a href={entry.frontmatter.paperurl}>
+                    <span>Paper</span>
+                  </a>
+                )}
+              </div>
+            </section>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {PrimaryContent && (
+      <section class="work-section work-section--narrative">
+        <div class="work-section__heading">
+          <p class="eyebrow">Technical Story</p>
+          <h2>How the system works</h2>
+        </div>
+        <div class="article">
+          <PrimaryContent />
+        </div>
+      </section>
+    )}
+  </article>
+</BaseLayout>

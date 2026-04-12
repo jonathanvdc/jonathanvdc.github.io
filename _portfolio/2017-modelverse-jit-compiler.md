@@ -2,6 +2,7 @@
 title: "Modelverse Just-in-Time Compiler"
 excerpt: "I created a tiered just-in-time (JIT) compiler for the Modelverse! It is 37 times faster than the previous Modelverse VM."
 collection: portfolio
+work_slug: modelverse-jit
 ---
 
 The University of Antwerp's Faculty of Science has an optional honors program aimed at introducing second-year and third-year undergraduate students with excellent grades to the scientific world.
