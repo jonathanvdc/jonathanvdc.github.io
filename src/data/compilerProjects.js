@@ -15,6 +15,10 @@ export const compilerProjects = [
       { label: 'Source', href: 'https://github.com/jonathanvdc/foresight' }
     ],
     visual: 'egraph',
+    image: {
+      src: '/images/teaser-2026-foresight.svg',
+      alt: 'Foresight parallel equality saturation teaser illustration'
+    },
     featured: true
   },
   {
@@ -90,8 +94,8 @@ export const compilerProjects = [
     title: 'Julia GPU Garbage Collection',
     subtitle: 'Runtime support for GPU languages',
     href: '/portfolio/2019-thesis/',
-    venue: 'Master thesis',
-    impact: 'Roughly 2x faster than CUDA malloc baseline',
+    venue: 'Master\'s thesis',
+    impact: '2x faster than CUDA malloc baseline',
     role: 'Implemented a conservative mark-and-sweep GPU GC',
     blurb:
       'Introduced compiler/runtime abstraction layers for reusable GPU garbage collection in CUDAnative.jl and Julia compiler infrastructure.',
@@ -100,7 +104,11 @@ export const compilerProjects = [
       { label: 'Project', href: '/portfolio/2019-thesis/' },
       { label: 'Thesis', href: '/files/2019-garbage-collection-abstractions-for-high-level-gpu-languages.pdf' }
     ],
-    visual: 'gpu'
+    visual: 'gpu',
+    image: {
+      src: '/images/teaser-2019-julia.svg',
+      alt: 'Julia GPU garbage collection teaser illustration'
+    }
   },
   {
     id: 'modelverse-jit',
@@ -108,7 +116,7 @@ export const compilerProjects = [
     subtitle: 'Tiered compilation for graph bytecode',
     href: '/portfolio/2017-modelverse-jit-compiler/',
     venue: 'Research project',
-    impact: 'Roughly 37x speedup',
+    impact: '37x speedup over reference implementation',
     role: 'Built interpreter, baseline JIT, and optimizing SSA JIT',
     blurb:
       'A tiered just-in-time compiler for graph-based bytecode, moving hot programs from interpretation to SSA-based optimization.',
