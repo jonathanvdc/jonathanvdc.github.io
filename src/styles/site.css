@@ -1758,7 +1758,8 @@ a:hover {
   min-width: 0;
   overflow: auto;
   padding: 48px 16px 16px;
-  white-space: pre-wrap;
+  text-align: left;
+  white-space: normal;
   word-break: normal;
   overflow-wrap: anywhere;
 }
@@ -1766,7 +1767,14 @@ a:hover {
 .citation-card code {
   display: block;
   min-width: 0;
-  white-space: inherit;
+}
+
+.citation-card__line {
+  display: block;
+  min-height: 1.5em;
+  padding-left: var(--indent);
+  text-align: left;
+  white-space: pre-wrap;
 }
 
 .work-evidence .artifact-badges {

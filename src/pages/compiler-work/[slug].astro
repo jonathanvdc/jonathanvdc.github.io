@@ -35,6 +35,17 @@ const projectEntries = [
 const primaryEntry = projectEntries[0] ?? publications[0];
 const PrimaryContent = primaryEntry?.Content;
 const pageDescription = primaryEntry?.frontmatter.excerpt ?? project.blurb;
+
+function citationLines(citation) {
+  return citation.trimEnd().split('\n').map((line) => {
+    const indent = line.match(/^\s*/)?.[0].length ?? 0;
+
+    return {
+      indent,
+      text: line.slice(indent)
+    };
+  });
+}
 ---
 
 <BaseLayout title={project.title} description={pageDescription} showSidebar={false}>
@@ -108,7 +119,7 @@ const pageDescription = primaryEntry?.frontmatter.excerpt ?? project.blurb;
                       <button class="citation-card__copy" type="button" data-copy-citation>
                         Copy
                       </button>
-                      <pre><code>{entry.frontmatter.bibtex}</code></pre>
+                      <pre><code>{citationLines(entry.frontmatter.bibtex).map((line) => <span class="citation-card__line" data-indent={line.indent} style={`--indent: ${line.indent}ch`}>{line.text}</span>)}</code></pre>
                     </div>
                   </details>
                 )}
@@ -166,7 +177,11 @@ const pageDescription = primaryEntry?.frontmatter.excerpt ?? project.blurb;
 <script>
   document.querySelectorAll('[data-copy-citation]').forEach((button) => {
     button.addEventListener('click', async () => {
-      const citation = button.closest('.citation-card')?.querySelector('code')?.textContent?.trim();
+      const lines = button.closest('.citation-card')?.querySelectorAll('.citation-card__line');
+      const citation = Array.from(lines ?? [])
+        .map((line) => `${' '.repeat(Number(line.dataset.indent ?? 0))}${line.textContent?.trimEnd() ?? ''}`)
+        .join('\n')
+        .trim();
       if (!citation) {
         return;
       }
