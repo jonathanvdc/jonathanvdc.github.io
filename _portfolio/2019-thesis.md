@@ -1,6 +1,6 @@
 ---
 title: "Garbage Collection for Julia on GPUs"
-excerpt: "I created the first GPU garbage collector for the Julia language!<br/><img style='width:500px;' src='/images/teaser-2019-julia.svg'>"
+excerpt: "I created the first GPU garbage collector for the Julia language!"
 collection: portfolio
 ---
 
