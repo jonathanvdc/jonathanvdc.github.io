@@ -436,16 +436,21 @@ a:hover {
 
 .compiler-card__visual--mask {
   background:
-    radial-gradient(circle at top left, rgba(255, 253, 247, 0.82), transparent 13rem),
-    linear-gradient(135deg, #eef8fb, #f8fbff 46%, #e6edf8);
+    radial-gradient(circle at top left, color-mix(in srgb, var(--mask-from) 20%, transparent), transparent 13rem),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--mask-from) 14%, var(--paper)) 0%,
+      color-mix(in srgb, var(--mask-from) 6%, var(--paper)) 46%,
+      color-mix(in srgb, var(--mask-to) 16%, var(--paper)) 100%
+    );
   margin: 0;
   padding: clamp(42px, 6vw, 58px) clamp(24px, 4vw, 38px) clamp(24px, 4vw, 38px);
 }
 
 .compiler-card__visual--mask::before {
   background:
-    radial-gradient(circle at 16% 16%, rgba(9, 150, 233, 0.18), transparent 12rem),
-    radial-gradient(circle at 88% 82%, rgba(3, 24, 104, 0.13), transparent 12rem);
+    radial-gradient(circle at 16% 16%, color-mix(in srgb, var(--mask-from) 18%, transparent), transparent 12rem),
+    radial-gradient(circle at 88% 82%, color-mix(in srgb, var(--mask-to) 15%, transparent), transparent 12rem);
   inset: 0;
   z-index: 1;
 }
