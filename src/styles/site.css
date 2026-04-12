@@ -201,7 +201,7 @@ a:hover {
 }
 
 .article__eyebrow-row {
-  align-items: center;
+  align-items: baseline;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -278,16 +278,13 @@ a:hover {
 }
 
 .article__eyebrow-row .artifact-badges {
-  align-items: center;
+  align-items: flex-end;
   gap: 6px;
+  line-height: 1;
 }
 
 .article__eyebrow-row .artifact-badges img {
   height: 28px;
-}
-
-.article__eyebrow-row .artifact-badges li:first-child img {
-  transform: translateY(1px);
 }
 
 .metadata,
@@ -571,6 +568,10 @@ a:hover {
 
 .artifact-badges li {
   margin: 0;
+}
+
+.article .artifact-badges li + li {
+  margin-top: 0;
 }
 
 .artifact-badges img {
