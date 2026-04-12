@@ -1,4 +1,6 @@
 ---
+const { placement = 'footer' } = Astro.props;
+
 const links = [
   { href: '/compiler-work/', label: 'Compiler Work' },
   { href: '/cv/', label: 'Resume' },
@@ -10,7 +12,7 @@ const links = [
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="site-links" aria-label="Site links">
+<nav class:list={['site-links', placement === 'header' && 'site-links--header']} aria-label="Site links">
   {links.map((link) => (
     <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>
       {link.label}

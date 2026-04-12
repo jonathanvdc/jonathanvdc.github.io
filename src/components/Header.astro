@@ -1,4 +1,6 @@
 ---
+import SiteLinks from './SiteLinks.astro';
+
 const { title = 'Jonathan Van der Cruysse' } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isHome = currentPath === '/';
@@ -15,7 +17,7 @@ const parentCrumbs = [
 const parentCrumb = parentCrumbs.find((crumb) => crumb.match.test(currentPath));
 ---
 
-<header class="site-header">
+<header class:list={['site-header', isHome && 'site-header--home']}>
   <nav class="site-crumb" aria-label="Breadcrumb">
     <a class="site-crumb__home" href="/">Jonathan Van der Cruysse</a>
     {parentCrumb && (
@@ -31,5 +33,5 @@ const parentCrumb = parentCrumbs.find((crumb) => crumb.match.test(currentPath));
       </>
     )}
   </nav>
-  <a class="site-header__resume" href="/files/resume.pdf">Resume PDF</a>
+  {isHome && <SiteLinks placement="header" />}
 </header>

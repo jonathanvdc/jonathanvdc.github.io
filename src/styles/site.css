@@ -8,6 +8,9 @@
   --accent-dark: #063f35;
   --accent-soft: #d8efe7;
   --gold: #b8792c;
+  --page-background:
+    radial-gradient(circle at top left, rgba(184, 121, 44, 0.16), transparent 34rem),
+    linear-gradient(135deg, #f8f2e5 0%, #eef5ed 54%, #fdfaf1 100%);
   --shadow: 0 24px 70px rgba(34, 43, 36, 0.12);
   --serif: Charter, "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
   --sans: "Avenir Next", Avenir, "Segoe UI", Helvetica, sans-serif;
@@ -18,14 +21,13 @@
 }
 
 html {
-  background:
-    radial-gradient(circle at top left, rgba(184, 121, 44, 0.16), transparent 34rem),
-    linear-gradient(135deg, #f8f2e5 0%, #eef5ed 54%, #fdfaf1 100%);
+  background: var(--page-background);
   color: var(--ink);
   font-family: var(--serif);
 }
 
 body {
+  background: var(--page-background);
   margin: 0;
   min-height: 100vh;
 }
@@ -73,8 +75,7 @@ a:hover {
 }
 
 .site-crumb a,
-.site-crumb span,
-.site-header__resume {
+.site-crumb span {
   color: var(--muted);
   font-size: 0.9rem;
   font-weight: 750;
@@ -88,20 +89,6 @@ a:hover {
 
 .site-crumb span[aria-current='page'] {
   color: var(--ink);
-}
-
-.site-header__resume {
-  border: 1px solid rgba(15, 102, 85, 0.16);
-  border-radius: 999px;
-  flex: 0 0 auto;
-  padding: 8px 12px;
-  text-decoration: none;
-}
-
-.site-header__resume:hover,
-.site-header__resume:focus-visible {
-  background: var(--accent-soft);
-  color: var(--accent-dark);
 }
 
 .page-grid {
@@ -1475,6 +1462,15 @@ a:hover {
   padding: 10px;
 }
 
+.site-links--header {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  justify-content: flex-end;
+  margin-top: 0;
+  padding: 0;
+}
+
 .site-links a {
   border-radius: 999px;
   color: var(--muted);
@@ -1482,6 +1478,10 @@ a:hover {
   font-weight: 750;
   padding: 8px 11px;
   text-decoration: none;
+}
+
+.site-links--header a {
+  padding: 6px 8px;
 }
 
 .site-links a[aria-current='page'],
@@ -1512,6 +1512,14 @@ a:hover {
   .site-header {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .site-links--header {
+    justify-content: flex-start;
+  }
+
+  .site-header--home .site-crumb {
+    display: none;
   }
 
   .page-grid {
@@ -1593,6 +1601,10 @@ a:hover {
   .site-links,
   .site-footer {
     margin-inline: 10px;
+  }
+
+  .site-links--header {
+    margin-inline: 0;
   }
 
   .page-grid {
