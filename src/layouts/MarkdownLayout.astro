@@ -12,7 +12,7 @@ const metadata = compact([
 ]);
 ---
 
-<BaseLayout title={frontmatter.title} description={frontmatter.excerpt ?? frontmatter.title}>
+<BaseLayout title={frontmatter.title} description={frontmatter.excerpt ?? frontmatter.title} showSidebar={false}>
   <article class="article">
     {(eyebrow || badges.length > 0) && (
       <div class="article__eyebrow-row">
