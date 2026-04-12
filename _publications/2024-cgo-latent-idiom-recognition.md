@@ -7,6 +7,10 @@ excerpt: 'An idiom recognition approach rooted in equality saturation'
 date: 2024-03-02
 venue: 'Proceedings of the 22nd ACM/IEEE International Symposium on Code Generation and Optimization (CGO)'
 paperurl: 'https://jonathanvdc.github.io/files/2024-cgo-latent-idiom-recognition.pdf'
+artifact_badges:
+  - available
+  - reusable
+  - results-reproduced
 #citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'
 ---
 

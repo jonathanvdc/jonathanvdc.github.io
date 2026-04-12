@@ -486,6 +486,13 @@ a:hover {
   padding: 22px 24px;
 }
 
+.archive-card__title-row {
+  align-items: start;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
 .archive-card__body h2 {
   font-size: clamp(1.35rem, 3vw, 2rem);
   letter-spacing: -0.04em;
@@ -508,6 +515,29 @@ a:hover {
 .archive-card__body .metadata,
 .archive-card__body .authors {
   margin: 0;
+}
+
+.artifact-badges {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.artifact-badges li {
+  margin: 0;
+}
+
+.artifact-badges img {
+  display: block;
+  height: 38px;
+  width: auto;
 }
 
 .archive-card__links {
@@ -1281,6 +1311,14 @@ a:hover {
   .archive-card__rail {
     justify-content: flex-start;
     min-height: 64px;
+  }
+
+  .archive-card__title-row {
+    grid-template-columns: 1fr;
+  }
+
+  .artifact-badges {
+    justify-content: flex-start;
   }
 }
 
