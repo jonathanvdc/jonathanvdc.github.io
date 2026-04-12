@@ -15,7 +15,10 @@ const { project } = Astro.props;
         <figcaption>{project.subtitle}</figcaption>
       </figure>
     ) : project.image ? (
-      <figure class="compiler-card__visual compiler-card__visual--image">
+      <figure
+        class="compiler-card__visual compiler-card__visual--image"
+        style={project.image.from && project.image.to ? `--image-from: ${project.image.from}; --image-to: ${project.image.to};` : undefined}
+      >
         <img src={project.image.src} alt={project.image.alt} loading="lazy" />
         <figcaption>{project.subtitle}</figcaption>
       </figure>

@@ -83,7 +83,12 @@ export const compilerProjects = [
       { label: 'Project', href: '/projects/2018-flame/' },
       { label: 'Source', href: 'https://github.com/jonathanvdc/flame' }
     ],
-    visual: 'ssa'
+    mask: {
+      src: '/images/teaser-project-flame-mask.svg',
+      alt: 'Flame compiler framework teaser silhouette',
+      from: '#febe14ff',
+      to: '#bd110cff'
+    }
   },
   {
     id: 'mlir-net',
@@ -100,7 +105,12 @@ export const compilerProjects = [
       { label: 'Project', href: '/projects/2026-mlir-net/' },
       { label: 'Source', href: 'https://github.com/jonathanvdc/MLIR.NET' }
     ],
-    visual: 'mlir'
+    image: {
+      src: '/images/teaser-project-mlir-net.svg',
+      alt: 'MLIR.NET typed MLIR infrastructure teaser silhouette',
+      from: '#e8d9f3ff',
+      to: '#3c1f66ff'
+    }
   },
   {
     id: 'julia-gpu-gc',
@@ -120,7 +130,9 @@ export const compilerProjects = [
     visual: 'gpu',
     image: {
       src: '/images/teaser-2019-julia.svg',
-      alt: 'Julia GPU garbage collection teaser illustration'
+      alt: 'Julia GPU garbage collection teaser illustration',
+      from: '#4063d8ff',
+      to: '#9558b2ff'
     }
   },
   {
@@ -138,6 +150,11 @@ export const compilerProjects = [
       { label: 'Project', href: '/portfolio/2017-modelverse-jit-compiler/' },
       { label: 'Report', href: '/files/2017-modelverse-jit-report.pdf' }
     ],
-    visual: 'jit'
+    mask: {
+      src: '/images/teaser-2017-msdl-mask.svg',
+      alt: 'Modelverse JIT teaser silhouette',
+      from: '#d60000ff',
+      to: '#971212ff'
+    }
   }
 ];

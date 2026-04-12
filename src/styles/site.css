@@ -427,9 +427,16 @@ a:hover {
 }
 
 .compiler-card__visual--image {
+  --image-from: var(--accent);
+  --image-to: var(--gold);
   background:
-    radial-gradient(circle at 20% 18%, rgba(255, 253, 247, 0.95), transparent 12rem),
-    linear-gradient(135deg, #fbf6ea, #e7f2ec 58%, #f5ead9);
+    radial-gradient(circle at top left, color-mix(in srgb, var(--image-from) 20%, transparent), transparent 13rem),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--image-from) 14%, var(--paper)) 0%,
+      color-mix(in srgb, var(--image-from) 6%, var(--paper)) 46%,
+      color-mix(in srgb, var(--image-to) 16%, var(--paper)) 100%
+    );
   margin: 0;
   padding: 0 clamp(22px, 4vw, 34px) clamp(30px, 5vw, 44px);
 }
@@ -457,8 +464,14 @@ a:hover {
 
 .compiler-card__mask-art {
   background:
-    radial-gradient(circle at top left, var(--mask-from), transparent 64%),
-    linear-gradient(135deg, var(--mask-from), var(--mask-to));
+    radial-gradient(circle at 22% 20%, var(--mask-from) 0 18%, transparent 48%),
+    linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--mask-from) 96%, white) 0%,
+      color-mix(in srgb, var(--mask-from) 86%, var(--mask-to)) 34%,
+      color-mix(in srgb, var(--mask-to) 90%, var(--mask-from)) 68%,
+      var(--mask-to) 100%
+    );
   height: 100%;
   mask: var(--mask-image) center 40% / contain no-repeat;
   -webkit-mask: var(--mask-image) center 40% / contain no-repeat;
@@ -477,7 +490,8 @@ a:hover {
 .compiler-card__visual--image::before {
   background:
     linear-gradient(180deg, transparent 50%, rgba(255, 253, 247, 0.58)),
-    radial-gradient(circle at 78% 22%, rgba(184, 121, 44, 0.12), transparent 12rem);
+    radial-gradient(circle at 16% 16%, color-mix(in srgb, var(--image-from) 18%, transparent), transparent 12rem),
+    radial-gradient(circle at 88% 82%, color-mix(in srgb, var(--image-to) 15%, transparent), transparent 12rem);
   inset: 0;
   z-index: 1;
 }
