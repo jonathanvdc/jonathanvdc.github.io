@@ -10,12 +10,27 @@ const links = [
 ];
 
 const currentPath = Astro.url.pathname;
+const isHeader = placement === 'header';
 ---
 
-<nav class:list={['site-links', placement === 'header' && 'site-links--header']} aria-label="Site links">
+<nav class:list={['site-links', isHeader && 'site-links--header']} aria-label="Site links" data-priority-nav={isHeader ? '' : undefined}>
   {links.map((link) => (
-    <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>
+    <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined} data-priority-link={isHeader ? '' : undefined}>
       {link.label}
     </a>
   ))}
+  {isHeader && (
+    <details class="site-links__more" data-priority-more hidden>
+      <summary aria-label="More site links">More</summary>
+      <div class="site-links__menu" data-priority-menu>
+        {links.map((link) => (
+          <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined} data-priority-menu-link>
+            {link.label}
+          </a>
+        ))}
+      </div>
+    </details>
+  )}
 </nav>
+
+{isHeader && <script src="../scripts/priorityNav.ts"></script>}
