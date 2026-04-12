@@ -1,6 +1,6 @@
 ---
 title: "Modelverse Just-in-Time Compiler"
-excerpt: "I created a tiered just-in-time (JIT) compiler for the Modelverse!<br/>It is 37 times faster than the previous Modelverse VM.<br/><img style='width:500px;' src='/images/modelverse-performance-teaser.png'>"
+excerpt: "I created a tiered just-in-time (JIT) compiler for the Modelverse! It is 37 times faster than the previous Modelverse VM."
 collection: portfolio
 ---
 
