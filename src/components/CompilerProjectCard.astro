@@ -1,0 +1,48 @@
+---
+const { project } = Astro.props;
+---
+
+<section class:list={['compiler-card', project.featured && 'compiler-card--featured']} aria-labelledby={`${project.id}-title`}>
+  <a class="compiler-card__overlay" href={project.href} aria-label={`Read more about ${project.title}`}></a>
+
+  <div class:list={['compiler-card__visual', `compiler-card__visual--${project.visual}`]} aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <strong>{project.subtitle}</strong>
+  </div>
+
+  <div class="compiler-card__body">
+    <div class="compiler-card__heading">
+      <p>{project.venue}</p>
+      <h2 id={`${project.id}-title`}>{project.title}</h2>
+    </div>
+
+    <p class="compiler-card__blurb">{project.blurb}</p>
+
+    <dl class="compiler-card__facts">
+      <div>
+        <dt>Impact</dt>
+        <dd>{project.impact}</dd>
+      </div>
+      <div>
+        <dt>Role</dt>
+        <dd>{project.role}</dd>
+      </div>
+    </dl>
+
+    <ul class="compiler-card__tech" aria-label={`${project.title} technologies`}>
+      {project.tech.map((item) => <li>{item}</li>)}
+    </ul>
+
+    <div class="compiler-card__links">
+      {project.links.map((link) => (
+        <a href={link.href}>
+          <span>{link.label}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
