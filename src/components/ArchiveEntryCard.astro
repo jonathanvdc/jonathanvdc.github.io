@@ -1,5 +1,5 @@
 ---
-const { entry, meta = [], eyebrow, links = [] } = Astro.props;
+const { entry, meta = [], eyebrow, links = [], badges = [] } = Astro.props;
 const { frontmatter } = entry;
 ---
 
@@ -9,7 +9,18 @@ const { frontmatter } = entry;
     <span>{eyebrow}</span>
   </div>
   <div class="archive-card__body">
-    <h2><a href={entry.url}>{frontmatter.title}</a></h2>
+    <div class="archive-card__title-row">
+      <h2><a href={entry.url}>{frontmatter.title}</a></h2>
+      {badges.length > 0 && (
+        <ul class="artifact-badges" aria-label="Artifact evaluation badges">
+          {badges.map((badge) => (
+            <li>
+              <img src={badge.src} alt={badge.alt} loading="lazy" />
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
     {frontmatter.authors && <p class="authors">{frontmatter.authors}</p>}
     {meta.length > 0 && <p class="metadata">{meta.filter(Boolean).join(' · ')}</p>}
     {frontmatter.excerpt && <p>{frontmatter.excerpt}</p>}
