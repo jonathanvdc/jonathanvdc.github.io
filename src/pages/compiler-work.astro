@@ -11,9 +11,9 @@ const supportingProjects = compilerProjects.filter((project) => !project.feature
   <section class="compiler-showcase">
     <div class="compiler-hero">
       <p class="eyebrow">Compiler Systems Portfolio</p>
-      <h1>Compiler systems for optimization, IR design, and runtimes.</h1>
+      <h1>Optimizing compilers and runtimes.</h1>
       <p>
-        I build compiler infrastructure for optimization, IR design, equality
+        I build compiler infrastructure for program optimization, equality
         saturation, hardware-aware compilation, managed runtimes, and MLIR
         tooling. The projects below span research prototypes, open-source
         infrastructure, and production-minded systems work.
@@ -35,7 +35,7 @@ const supportingProjects = compilerProjects.filter((project) => !project.feature
 
     <div class="compiler-section-heading">
       <p class="eyebrow">Compiler Infrastructure</p>
-      <h2>Projects spanning IRs, runtimes, and code generation</h2>
+      <h2>IRs, runtimes, and optimizers</h2>
     </div>
     <div class="compiler-grid">
       {supportingProjects.map((project) => <CompilerProjectCard project={project} />)}

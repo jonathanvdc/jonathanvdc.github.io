@@ -5,14 +5,23 @@ const { project } = Astro.props;
 <section class:list={['compiler-card', project.featured && 'compiler-card--featured']} aria-labelledby={`${project.id}-title`}>
   <a class="compiler-card__overlay" href={project.href} aria-label={`Read more about ${project.title}`}></a>
 
-  <div class:list={['compiler-card__visual', `compiler-card__visual--${project.visual}`]} aria-hidden="true">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <strong>{project.subtitle}</strong>
-  </div>
+  {
+    project.image ? (
+      <figure class="compiler-card__visual compiler-card__visual--image">
+        <img src={project.image.src} alt={project.image.alt} loading="lazy" />
+        <figcaption>{project.subtitle}</figcaption>
+      </figure>
+    ) : (
+      <div class:list={['compiler-card__visual', `compiler-card__visual--${project.visual}`]} aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <strong>{project.subtitle}</strong>
+      </div>
+    )
+  }
 
   <div class="compiler-card__body">
     <div class="compiler-card__heading">
