@@ -35,6 +35,10 @@ const projectEntries = [
 const primaryEntry = projectEntries[0] ?? publications[0];
 const PrimaryContent = primaryEntry?.Content;
 const pageDescription = primaryEntry?.frontmatter.excerpt ?? project.blurb;
+const projectVisual = project.mask ?? project.image;
+const heroStyle = projectVisual
+  ? `--work-from: ${projectVisual.from}; --work-to: ${projectVisual.to};`
+  : undefined;
 
 function citationLines(citation) {
   return citation.trimEnd().split('\n').map((line) => {
@@ -50,15 +54,29 @@ function citationLines(citation) {
 
 <BaseLayout title={project.title} description={pageDescription} showSidebar={false}>
   <article class="work-detail">
-    <section class="work-hero">
-      <div>
+    <section class="work-hero" style={heroStyle}>
+      <div class="work-hero__heading">
         <p class="eyebrow">{project.venue}</p>
         <h1>{project.title}</h1>
+      </div>
+      <div class="work-hero__summary">
         <p>{project.blurb}</p>
         <div class="action-row">
           {project.links.map((link) => <a class="button button--secondary" href={link.href}>{link.label}</a>)}
         </div>
       </div>
+      {project.mask ? (
+        <div class="work-hero__mark" aria-hidden="true">
+          <div
+            class="work-hero__mark-art"
+            style={`--mark-image: url('${project.mask.src}');`}
+          ></div>
+        </div>
+      ) : project.image ? (
+        <div class="work-hero__mark" aria-hidden="true">
+          <img src={project.image.src} alt="" loading="lazy" />
+        </div>
+      ) : null}
       <dl class="work-hero__facts">
         <div>
           <dt>Impact</dt>

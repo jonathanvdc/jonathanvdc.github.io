@@ -1,38 +1,13 @@
 ---
+import CompilerProjectVisual from './CompilerProjectVisual.astro';
+
 const { project } = Astro.props;
 ---
 
 <section class:list={['compiler-card', project.featured && 'compiler-card--featured']} aria-labelledby={`${project.id}-title`}>
   <a class="compiler-card__overlay" href={project.href} aria-label={`Read more about ${project.title}`}></a>
 
-  {
-    project.mask ? (
-      <figure
-        class="compiler-card__visual compiler-card__visual--mask"
-        style={`--mask-image: url('${project.mask.src}'); --mask-from: ${project.mask.from}; --mask-to: ${project.mask.to};`}
-      >
-        <div class="compiler-card__mask-art" role="img" aria-label={project.mask.alt}></div>
-        <figcaption>{project.subtitle}</figcaption>
-      </figure>
-    ) : project.image ? (
-      <figure
-        class="compiler-card__visual compiler-card__visual--image"
-        style={project.image.from && project.image.to ? `--image-from: ${project.image.from}; --image-to: ${project.image.to};` : undefined}
-      >
-        <img src={project.image.src} alt={project.image.alt} loading="lazy" />
-        <figcaption>{project.subtitle}</figcaption>
-      </figure>
-    ) : (
-      <div class:list={['compiler-card__visual', `compiler-card__visual--${project.visual}`]} aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <strong>{project.subtitle}</strong>
-      </div>
-    )
-  }
+  <CompilerProjectVisual project={project} />
 
   <div class="compiler-card__body">
     <div class="compiler-card__heading">

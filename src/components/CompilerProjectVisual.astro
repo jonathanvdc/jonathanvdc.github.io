@@ -1,0 +1,39 @@
+---
+const { project, variant = 'card' } = Astro.props;
+const visualClasses = [
+  'compiler-card__visual',
+  `compiler-card__visual--${variant}`,
+  project.mask && 'compiler-card__visual--mask',
+  project.image && 'compiler-card__visual--image',
+  !project.mask && !project.image && project.visual && `compiler-card__visual--${project.visual}`
+];
+---
+
+{
+  project.mask ? (
+    <figure
+      class:list={visualClasses}
+      style={`--mask-image: url('${project.mask.src}'); --mask-from: ${project.mask.from}; --mask-to: ${project.mask.to};`}
+    >
+      <div class="compiler-card__mask-art" role="img" aria-label={project.mask.alt}></div>
+      <figcaption>{project.subtitle}</figcaption>
+    </figure>
+  ) : project.image ? (
+    <figure
+      class:list={visualClasses}
+      style={project.image.from && project.image.to ? `--image-from: ${project.image.from}; --image-to: ${project.image.to};` : undefined}
+    >
+      <img src={project.image.src} alt={project.image.alt} loading="lazy" />
+      <figcaption>{project.subtitle}</figcaption>
+    </figure>
+  ) : (
+    <div class:list={visualClasses} aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <strong>{project.subtitle}</strong>
+    </div>
+  )
+}
