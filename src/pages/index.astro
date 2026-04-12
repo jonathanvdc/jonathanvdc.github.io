@@ -1,106 +1,76 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CompilerProjectCard from '../components/CompilerProjectCard.astro';
+import { compilerProjects } from '../data/compilerProjects.js';
+
+const featuredProjects = compilerProjects.filter((project) => project.featured);
 ---
 
 <BaseLayout title="Jonathan Van der Cruysse" description="Compiler engineer specializing in optimizations, IR design, and equality saturation">
-  <article class="article">
-    <p class="eyebrow">Compilers · IRs · Equality Saturation</p>
-    <h1>Compiler engineer building practical optimization systems.</h1>
-    <p class="dek">
-      I work on compiler infrastructure for accelerators, FPGAs, managed runtimes,
-      and MLIR tooling, with an emphasis on IR design and equality saturation.
-    </p>
+  <section class="home-page">
+    <section class="home-hero">
+      <p class="eyebrow">Compilers · IRs · Equality Saturation</p>
+      <h1>Compiler engineer building compilers for new hardware.</h1>
+      <p>
+        I build compilers for emerging systems, including accelerators, FPGAs, managed runtimes, and MLIR tooling.
+        My work focuses on IR design and novel optimization techniques, including equality saturation.
+      </p>
+      <div class="home-hero__actions">
+        <a class="button" href="/compiler-work/">See Compiler Work</a>
+        <a class="button button--secondary" href="/files/resume.pdf">Resume PDF</a>
+      </div>
+    </section>
 
-    <p>
-      I am a compiler engineer and PhD candidate at
-      <a href="https://www.mcgill.ca/">McGill University</a>'s
-      <a href="https://www.cs.mcgill.ca/">School of Computer Science</a>,
-      affiliated with <a href="https://mila.quebec">Mila</a>.
-      I specialize in compiler optimizations, Intermediate Representation (IR)
-      design, and equality saturation, with a focus on making advanced program
-      transformations practical for real systems.
-    </p>
+    <dl class="home-proof" aria-label="Compiler systems highlights">
+      <div>
+        <dt>Recent Venues</dt>
+        <dd>CGO · CC</dd>
+      </div>
+      <div>
+        <dt>Systems</dt>
+        <dd>Foresight · SkeleShare · MLIR.NET</dd>
+      </div>
+      <div>
+        <dt>Looking For</dt>
+        <dd>Compiler, PL, and systems roles in Canada</dd>
+      </div>
+    </dl>
 
-    <p>
-      I build compiler infrastructure for ML accelerators, Field-Programmable
-      Gate Arrays (FPGAs), managed runtimes, and
-      <a href="/projects/2026-mlir-net">MLIR tooling</a>. My recent work includes
-      <a href="/portfolio/2026-foresight">Foresight</a>, a parallel equality
-      saturation engine published at CC 2026, and
-      <a href="/publication/2026-cgo-skeleshare">SkeleShare</a>, a CGO 2026
-      system for automated FPGA resource sharing.
-    </p>
+    <section class="home-narrative">
+      <div>
+        <p class="eyebrow">Current Focus</p>
+        <h2>Research-grade ideas, engineered as usable compiler infrastructure.</h2>
+      </div>
+      <p>
+        I am a PhD candidate at <a href="https://www.mcgill.ca/">McGill University</a>,
+        affiliated with <a href="https://mila.quebec">Mila</a>, working with
+        <a href="https://cdubach.bitbucket.io">Christophe Dubach</a>. My recent
+        work turns equality saturation and compact functional IRs into tools for
+        parallel rewriting, FPGA design search, and library idiom recognition.
+      </p>
+    </section>
 
-    <p>I am currently exploring Canadian research and engineering roles in compilers, programming languages, and systems.</p>
+    <section class="home-featured">
+      <div class="compiler-section-heading">
+        <p class="eyebrow">Featured Systems</p>
+        <h2>Recent compiler research</h2>
+      </div>
+      <div class="compiler-grid compiler-grid--featured">
+        {featuredProjects.map((project) => <CompilerProjectCard project={project} />)}
+      </div>
+    </section>
 
-    <p>
-      <a href="/compiler-work/">Compiler Work</a> ·
-      <a href="/cv/">Resume</a> ·
-      <a href="https://github.com/jonathanvdc">GitHub</a> ·
-      <a href="/publications/">Publications</a> ·
-      <a href="mailto:jonathan.vandercruysse@mail.mcgill.ca">Email</a>
-    </p>
-
-    <h2>Selected Compiler Work</h2>
-    <ul>
-      <li>
-        <a href="/portfolio/2026-foresight">Foresight</a>: a parallel,
-        extensible equality saturation library in Scala with programmable
-        saturation strategies, generalized metadata, and deferred parallel
-        rewriting. Foresight achieves up to 16x speedups on a reimplementation
-        of latent idiom recognition and is described in our
-        <a href="/publication/2026-cc-foresight">CC 2026 paper</a>.
-      </li>
-      <li>
-        <a href="/publication/2026-cgo-skeleshare">SkeleShare</a>: an
-        equality-saturation-based system for automatic hardware resource sharing
-        in FPGA designs. It combines algorithmic skeletons and solver-based
-        extraction to match or exceed expert manual designs on neural-network
-        and image-processing workloads.
-      </li>
-      <li>
-        <a href="/publication/2024-cgo-latent-idiom-recognition">Latent Idiom Recognition</a>:
-        a CGO 2024 approach for recognizing BLAS and PyTorch idioms using a
-        minimalist functional array IR and equality saturation. The generated C
-        implementations achieve a 1.46x geometric mean speedup over reference kernels.
-      </li>
-      <li>
-        <a href="/projects/2018-flame">Flame</a>: an SSA-based compiler
-        framework for managed languages. Flame reads and optimizes .NET programs
-        and lowers managed-language code toward targets such as LLVM IR and WebAssembly.
-      </li>
-      <li>
-        <a href="/projects/2026-mlir-net">MLIR.NET</a>: strongly typed MLIR
-        infrastructure for .NET, with generated dialect-specific APIs from
-        TableGen/ODS definitions.
-      </li>
-      <li>
-        <a href="/portfolio/2017-modelverse-jit-compiler">Modelverse JIT</a>:
-        a tiered just-in-time compiler for graph-based bytecode that reaches
-        37x speedups over the previous virtual machine.
-      </li>
-    </ul>
-
-    <h2>What I Am Looking For</h2>
-    <p>
-      I am especially interested in roles involving optimizing compilers, IR
-      design, MLIR/LLVM infrastructure, equality saturation, language runtimes,
-      hardware-aware compilation, and performance engineering.
-    </p>
-
-    <h2>Research Background</h2>
-    <p>
-      My PhD is supervised by <a href="https://cdubach.bitbucket.io">Christophe Dubach</a>.
-      I study how equality saturation can solve code generation and optimization
-      challenges for ML accelerators and FPGAs. Across this work, IR design is
-      the common thread: I use functional program representations, rewrite
-      systems, and extensible compiler infrastructure to expose optimization
-      opportunities that are difficult to capture with brittle hand-written recognizers.
-    </p>
-
-    <p>
-      My work has resulted in peer-reviewed publications at top compiler venues,
-      including CGO and CC, and in open-source compiler infrastructure.
-    </p>
-  </article>
+    <section class="home-next">
+      <div>
+        <p class="eyebrow">Quick Paths</p>
+        <h2>For hiring teams and compiler people in a hurry.</h2>
+      </div>
+      <div class="home-next__links">
+        <a href="/publications/">Publications</a>
+        <a href="/talks/">Talks</a>
+        <a href="/projects/2026-mlir-net/">MLIR.NET</a>
+        <a href="mailto:jonathan.vandercruysse@mail.mcgill.ca">Email</a>
+      </div>
+    </section>
+  </section>
 </BaseLayout>
