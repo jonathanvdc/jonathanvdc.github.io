@@ -1,0 +1,19 @@
+---
+const links = [
+  { href: '/compiler-work/', label: 'Compiler Work' },
+  { href: '/cv/', label: 'Resume' },
+  { href: '/publications/', label: 'Publications' },
+  { href: '/talks/', label: 'Talks' },
+  { href: '/teaching/', label: 'Teaching' }
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav class="site-links" aria-label="Site links">
+  {links.map((link) => (
+    <a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined}>
+      {link.label}
+    </a>
+  ))}
+</nav>

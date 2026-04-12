@@ -1,27 +1,35 @@
 ---
-const nav = [
-  { href: '/compiler-work/', label: 'Compiler Work' },
-  { href: '/cv/', label: 'Resume' },
-  { href: '/publications/', label: 'Publications' },
-  { href: '/talks/', label: 'Talks' },
-  { href: '/teaching/', label: 'Teaching' }
+const { title = 'Jonathan Van der Cruysse' } = Astro.props;
+const currentPath = Astro.url.pathname;
+const isHome = currentPath === '/';
+const crumbTitle = title === 'Jonathan Van der Cruysse' ? '' : title;
+
+const parentCrumbs = [
+  { match: /^\/publication\//, href: '/publications/', label: 'Publications' },
+  { match: /^\/talks\/.+/, href: '/talks/', label: 'Talks' },
+  { match: /^\/teaching\/.+/, href: '/teaching/', label: 'Teaching' },
+  { match: /^\/projects\//, href: '/compiler-work/', label: 'Compiler Work' },
+  { match: /^\/portfolio\//, href: '/compiler-work/', label: 'Compiler Work' }
 ];
 
-const currentPath = Astro.url.pathname;
+const parentCrumb = parentCrumbs.find((crumb) => crumb.match.test(currentPath));
 ---
 
 <header class="site-header">
-  <a class="brand" href="/" aria-label="Jonathan Van der Cruysse home">
-    <span class="brand-mark">
-      <img src="/images/profile.png" alt="" aria-hidden="true" />
-    </span>
-    <span class="brand-text">Jonathan Van der Cruysse</span>
-  </a>
-  <nav class="nav" aria-label="Main navigation">
-    {nav.map((item) => (
-      <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
-        {item.label}
-      </a>
-    ))}
+  <nav class="site-crumb" aria-label="Breadcrumb">
+    <a class="site-crumb__home" href="/">Jonathan Van der Cruysse</a>
+    {parentCrumb && (
+      <>
+        <span aria-hidden="true">/</span>
+        <a href={parentCrumb.href}>{parentCrumb.label}</a>
+      </>
+    )}
+    {!isHome && crumbTitle && (
+      <>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{crumbTitle}</span>
+      </>
+    )}
   </nav>
+  <a class="site-header__resume" href="/files/resume.pdf">Resume PDF</a>
 </header>

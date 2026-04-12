@@ -1,6 +1,7 @@
 ---
 import Header from '../components/Header.astro';
 import AuthorSidebar from '../components/AuthorSidebar.astro';
+import SiteLinks from '../components/SiteLinks.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/site.css';
 
@@ -26,13 +27,14 @@ const pageTitle = title === 'Jonathan Van der Cruysse'
   </head>
   <body>
     <div class="shell">
-      <Header />
+      <Header title={title} />
       <main class:list={['page-grid', !showSidebar && 'page-grid--single']}>
         {showSidebar && <AuthorSidebar />}
         <section class="content-panel">
           <slot />
         </section>
       </main>
+      <SiteLinks />
       <Footer />
     </div>
   </body>
