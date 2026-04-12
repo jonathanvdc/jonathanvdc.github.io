@@ -13,6 +13,18 @@ artifact_badges:
   - available
   - reusable
   - results-reproduced
+bibtex: |
+  @inproceedings{vandercruysse2026skeleshare,
+    author = {Van der Cruysse, Jonathan and Juang, Tzung-Han and Khah, Shakiba Bolbolian and Dubach, Christophe},
+    title = {SkeleShare: Algorithmic Skeletons and Equality Saturation for Hardware Resource Sharing},
+    year = {2026},
+    url = {https://jonathanvdc.github.io/files/2026-cgo-skeleshare.pdf},
+    booktitle = {Proceedings of the 24th ACM/IEEE International Symposium on Code Generation and Optimization},
+    numpages = {14},
+    keywords = {FPGA compilation, functional programming, resource allocation, resource sharing, equality saturation, algorithmic skeletons, e-graphs},
+    location = {Sydney, NSW, Australia},
+    series = {CGO '26}
+  }
 #citation: 'Your Name, You. (2015). &quot;Paper Title Number 3.&quot; <i>Journal 1</i>. 1(3).'
 ---
 

@@ -13,6 +13,24 @@ artifact_badges:
   - available
   - reusable
   - results-reproduced
+bibtex: |
+  @inproceedings{vandercruysse2026foresight,
+    author = {Van der Cruysse, Jonathan and Zayed, Abd-El-Aziz and Peng, Mai Jacob and Dubach, Christophe},
+    title = {Parallel and Customizable Equality Saturation},
+    year = {2026},
+    isbn = {9798400722745},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    url = {https://doi.org/10.1145/3771775.3786266},
+    doi = {10.1145/3771775.3786266},
+    abstract = {Equality saturation enables compilers to explore many semantically equivalent program variants, deferring optimization decisions to a final extraction phase. However, existing frameworks exhibit sequential execution and hard-coded saturation loops. This limits scalability and requires significant engineering effort to customize saturation behavior. This paper addresses these limitations using three novel techniques. First, it shows how saturation can be parallelized thanks to the use of thread-safe data structures and the notion of deferred e-graph updates. Second, it provides an extensible mechanism to express custom and composable saturation strategies. Third, it generalizes e-graph metadata to support custom e-graph annotations. The implementation, written in Scala, is evaluated on four use-cases: classical program optimization, idiom recognition, scalability strategies and incremental equality saturation. The results show that it outperforms several existing equality saturation engines, including the highly optimized egglog library. When used to reimplement an existing idiom recognition technique, the new design finds higher-quality idioms, 16\texttimes{} faster. Additionally, the design is able to natively express state-of-the-art custom equality saturation behavior such as incremental equality saturation and multi-phase rewriting strategies without any modification to the core library.},
+    booktitle = {Proceedings of the 35th ACM SIGPLAN International Conference on Compiler Construction},
+    pages = {94–105},
+    numpages = {12},
+    keywords = {Compiler Infrastructure, E-Graphs, Equality Saturation, Program Optimization, Rewrite Systems},
+    location = {Sydney, NSW, Australia},
+    series = {CC '26}
+  }
 ---
 
 At a glance
