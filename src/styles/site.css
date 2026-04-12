@@ -200,6 +200,14 @@ a:hover {
   max-width: 820px;
 }
 
+.article__eyebrow-row {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 10px;
+}
+
 .article h1 {
   font-size: clamp(2.3rem, 6vw, 4.5rem);
   letter-spacing: -0.065em;
@@ -207,7 +215,7 @@ a:hover {
   margin: 0 0 18px;
 }
 
-.article h1:not(:first-child) {
+.article h1:not(.article__title):not(:first-child) {
   font-size: clamp(1.65rem, 4vw, 2.45rem);
   letter-spacing: -0.035em;
   line-height: 1.08;
@@ -263,6 +271,23 @@ a:hover {
   letter-spacing: 0.16em;
   margin: 0 0 10px;
   text-transform: uppercase;
+}
+
+.article__eyebrow-row .eyebrow {
+  margin: 0;
+}
+
+.article__eyebrow-row .artifact-badges {
+  align-items: center;
+  gap: 6px;
+}
+
+.article__eyebrow-row .artifact-badges img {
+  height: 28px;
+}
+
+.article__eyebrow-row .artifact-badges li:first-child img {
+  transform: translateY(1px);
 }
 
 .metadata,
@@ -549,8 +574,10 @@ a:hover {
 }
 
 .artifact-badges img {
+  border-radius: 0;
   display: block;
   height: 38px;
+  margin: 0;
   width: auto;
 }
 
@@ -1334,6 +1361,7 @@ a:hover {
   .artifact-badges {
     justify-content: flex-start;
   }
+
 }
 
 @media (max-width: 560px) {

@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArchiveEntryCard from '../../components/ArchiveEntryCard.astro';
 import ArchiveHero from '../../components/ArchiveHero.astro';
+import { badgesFromKeys } from '../../lib/artifactBadges.js';
 import { byDateDesc, entriesFromGlob, formatDate } from '../../lib/content.js';
 
 const publications = entriesFromGlob(
@@ -15,20 +16,6 @@ const stats = [
   'papers, slides, artifacts'
 ];
 
-const artifactBadges = {
-  available: {
-    src: '/images/artifact-evaluation-badges/artifacts_available_v1_1.svg',
-    alt: 'Artifact Available'
-  },
-  reusable: {
-    src: '/images/artifact-evaluation-badges/artifacts_evaluated_reusable_v1_1.svg',
-    alt: 'Artifact Reusable'
-  },
-  'results-reproduced': {
-    src: '/images/artifact-evaluation-badges/results_reproduced_v1_1.svg',
-    alt: 'Results Reproduced'
-  }
-};
 ---
 
 <BaseLayout title="Publications" description="Peer-reviewed publications by Jonathan Van der Cruysse." showSidebar={false}>
@@ -47,9 +34,7 @@ const artifactBadges = {
           entry.frontmatter.paperurl && { label: 'PDF', href: entry.frontmatter.paperurl },
           entry.frontmatter.slidesurl && { label: 'Slides', href: entry.frontmatter.slidesurl }
         ].filter(Boolean);
-        const badges = (entry.frontmatter.artifact_badges ?? [])
-          .map((badge) => artifactBadges[badge])
-          .filter(Boolean);
+        const badges = badgesFromKeys(entry.frontmatter.artifact_badges);
 
         return (
           <ArchiveEntryCard

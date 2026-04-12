@@ -2,7 +2,7 @@
 import BaseLayout from './BaseLayout.astro';
 import { compact, formatDate } from '../lib/content.js';
 
-const { entry, eyebrow } = Astro.props;
+const { entry, eyebrow, badges = [] } = Astro.props;
 const { frontmatter, Content } = entry;
 const metadata = compact([
   frontmatter.type,
@@ -14,8 +14,21 @@ const metadata = compact([
 
 <BaseLayout title={frontmatter.title} description={frontmatter.excerpt ?? frontmatter.title}>
   <article class="article">
-    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-    <h1>{frontmatter.title}</h1>
+    {(eyebrow || badges.length > 0) && (
+      <div class="article__eyebrow-row">
+        {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+        {badges.length > 0 && (
+          <ul class="artifact-badges" aria-label="Artifact evaluation badges">
+            {badges.map((badge) => (
+              <li>
+                <img src={badge.src} alt={badge.alt} loading="lazy" />
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    )}
+    <h1 class="article__title">{frontmatter.title}</h1>
     {frontmatter.authors && <p class="authors">{frontmatter.authors}</p>}
     {metadata.length > 0 && <p class="metadata">{metadata.join(' · ')}</p>}
     {frontmatter.excerpt && <p class="dek">{frontmatter.excerpt}</p>}
