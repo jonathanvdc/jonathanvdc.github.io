@@ -6,6 +6,7 @@ permalink: /publication/2026-cc-foresight
 excerpt: "A parallel, extensible equality saturation engine with programmable strategies and generalized metadata"
 date: 2026-02-01
 venue: "Proceedings of the 35th ACM SIGPLAN International Conference on Compiler Construction (CC)"
+venue_abbreviation: CC
 paperurl: "https://jonathanvdc.github.io/files/2026-cc-foresight.pdf"
 artifact_badges:
   - available

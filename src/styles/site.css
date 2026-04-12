@@ -470,14 +470,28 @@ a:hover {
     linear-gradient(135deg, rgba(15, 102, 85, 0.92), rgba(6, 63, 53, 0.92));
   color: var(--paper);
   display: flex;
+  flex-direction: column;
   font-family: var(--sans);
   font-size: 0.88rem;
   font-weight: 900;
+  gap: 6px;
   justify-content: center;
   letter-spacing: 0.08em;
   padding: 18px;
   text-align: center;
   text-transform: uppercase;
+}
+
+.archive-card__rail span:first-child {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.archive-card__rail span + span {
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  opacity: 0.74;
 }
 
 .archive-card__body {

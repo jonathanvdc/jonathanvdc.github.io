@@ -5,6 +5,7 @@ type: "Talk"
 permalink: /talks/2019-flashfreeze
 date: 2019-10-20
 venue: 'ACM SIGPLAN International Workshop on Meta-Programming Techniques and Reflection, co-located with SPLASH'
+venue_abbreviation: META
 location: "Athens, Greece"
 ---
 

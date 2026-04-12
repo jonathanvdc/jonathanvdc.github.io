@@ -54,7 +54,10 @@ const artifactBadges = {
         return (
           <ArchiveEntryCard
             entry={entry}
-            eyebrow={formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}
+            eyebrow={[
+              entry.frontmatter.venue_abbreviation,
+              formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })
+            ]}
             meta={[entry.frontmatter.venue, formatDate(entry.frontmatter.date)]}
             links={links}
             badges={badges}

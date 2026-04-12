@@ -5,6 +5,7 @@ type: "Talk"
 permalink: /talks/2024-cgo-latent-idiom-recognition
 date: 2024-03-05
 venue: '22nd ACM/IEEE International Symposium on Code Generation and Optimization'
+venue_abbreviation: CGO
 location: "Edinburgh, United Kingdom"
 ---
 

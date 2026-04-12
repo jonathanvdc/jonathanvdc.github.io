@@ -32,7 +32,10 @@ const locationSummary = 'Sydney · Toronto · Edinburgh · Athens';
         return (
           <ArchiveEntryCard
             entry={entry}
-            eyebrow={formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}
+            eyebrow={[
+              entry.frontmatter.venue_abbreviation,
+              formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })
+            ]}
             meta={[entry.frontmatter.venue, entry.frontmatter.location, formatDate(entry.frontmatter.date)]}
             links={links}
           />
