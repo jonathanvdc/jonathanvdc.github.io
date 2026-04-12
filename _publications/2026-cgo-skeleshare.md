@@ -6,6 +6,7 @@ permalink: /publication/2026-cgo-skeleshare
 excerpt: 'An automated approach to hardware resource allocation and sharing using equality saturation and algorithmic skeletons'
 date: 2026-02-01
 venue: 'Proceedings of the 24th ACM/IEEE International Symposium on Code Generation and Optimization (CGO)'
+venue_abbreviation: CGO
 paperurl: 'https://jonathanvdc.github.io/files/2026-cgo-skeleshare.pdf'
 artifact_badges:
   - available

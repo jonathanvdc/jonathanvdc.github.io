@@ -5,6 +5,7 @@ type: "Talk"
 permalink: /talks/2026-cgo-skeleshare
 date: 2026-02-02
 venue: '24th ACM/IEEE International Symposium on Code Generation and Optimization'
+venue_abbreviation: CGO
 location: "Sydney, Australia"
 ---
 

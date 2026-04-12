@@ -5,6 +5,7 @@ type: "Talk"
 permalink: /talks/2026-cc-foresight
 date: 2026-01-31
 venue: '35th ACM SIGPLAN International Conference on Compiler Construction'
+venue_abbreviation: CC
 location: "Sydney, Australia"
 ---
 
