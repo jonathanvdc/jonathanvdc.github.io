@@ -39,6 +39,54 @@ const projectVisual = project.mask ?? project.image;
 const heroStyle = projectVisual
   ? `--work-from: ${projectVisual.from}; --work-to: ${projectVisual.to};`
   : undefined;
+const outputItems = [
+  ...publications.map((entry) => ({ type: 'publication', entry })),
+  ...talks.map((entry) => ({ type: 'talk', entry }))
+];
+const outputTitle = describeOutputs(publications.length, talks.length);
+const outputEyebrowLabel = describeOutputEyebrow(publications.length, talks.length);
+
+function countLabel(count, singular, plural = `${singular}s`) {
+  if (count === 0) {
+    return undefined;
+  }
+
+  return count === 1 ? singular : `${count} ${plural}`;
+}
+
+function joinLabels(labels) {
+  if (labels.length <= 2) {
+    return labels.join(' and ');
+  }
+
+  return `${labels.slice(0, -1).join(', ')}, and ${labels.at(-1)}`;
+}
+
+function describeOutputs(publicationCount, talkCount) {
+  return joinLabels(compact([
+    countLabel(publicationCount, 'Peer-reviewed paper', 'papers'),
+    countLabel(talkCount, 'talk', 'talks')
+  ]));
+}
+
+function describeOutputEyebrow(publicationCount, talkCount) {
+  if (publicationCount > 0 && talkCount > 0) {
+    return publicationCount === 1 && talkCount === 1
+      ? 'Paper + talk'
+      : 'Papers + talks';
+  }
+
+  return publicationCount > 0
+    ? countLabel(publicationCount, 'Publication', 'Publications')
+    : countLabel(talkCount, 'Talk', 'Talks');
+}
+
+function outputEyebrow(type, entry) {
+  const kind = type === 'publication' ? 'Paper' : 'Talk';
+  const year = formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined });
+
+  return compact([kind, compact([entry.frontmatter.venue_abbreviation, year]).join(' ')]).join(' · ');
+}
 
 function citationLines(citation) {
   return citation.trimEnd().split('\n').map((line) => {
@@ -56,7 +104,7 @@ function citationLines(citation) {
   <article class="work-detail">
     <section class="work-hero" style={heroStyle}>
       <div class="work-hero__heading">
-        <p class="eyebrow">{project.venue}</p>
+        <p class="eyebrow">{project.subtitle}</p>
         <h1>{project.title}</h1>
       </div>
       <div class="work-hero__summary">
@@ -93,25 +141,35 @@ function citationLines(citation) {
       </dl>
     </section>
 
-    {publications.length > 0 && (
+    {outputItems.length > 0 && (
       <section class="work-section">
         <div class="work-section__heading">
-          <p class="eyebrow">Publication</p>
-          <h2>Peer-reviewed paper</h2>
+          <p class="eyebrow">{outputEyebrowLabel}</p>
+          <h2>{outputTitle}</h2>
         </div>
         <div class="work-evidence-list">
-          {publications.map((entry) => {
+          {outputItems.map(({ type, entry }) => {
+            const isPublication = type === 'publication';
             const badges = badgesFromKeys(entry.frontmatter.artifact_badges);
-            const metadata = compact([entry.frontmatter.venue, formatDate(entry.frontmatter.date)]);
+            const metadata = compact([
+              entry.frontmatter.venue,
+              type === 'talk' && entry.frontmatter.location,
+              formatDate(entry.frontmatter.date)
+            ]);
 
             return (
-              <section id={`publication-${entry.slug}`} class="work-evidence work-evidence--publication">
+              <section
+                id={`${type}-${entry.slug}`}
+                class:list={[
+                  isPublication ? 'work-evidence work-evidence--publication' : 'work-talk'
+                ]}
+              >
                 <div class="work-evidence__title-row">
                   <div>
-                    <p class="work-evidence__eyebrow">{entry.frontmatter.venue_abbreviation} {formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}</p>
+                    <p class="work-evidence__eyebrow">{outputEyebrow(type, entry)}</p>
                     <h3>{entry.frontmatter.title}</h3>
                   </div>
-                  {badges.length > 0 && (
+                  {isPublication && badges.length > 0 && (
                     <ul class="artifact-badges" aria-label="Artifact evaluation badges">
                       {badges.map((badge) => (
                         <li>
@@ -121,14 +179,29 @@ function citationLines(citation) {
                     </ul>
                   )}
                 </div>
-                {entry.frontmatter.authors && <p class="authors">{entry.frontmatter.authors}</p>}
+                {isPublication && entry.frontmatter.authors && <p class="authors">{entry.frontmatter.authors}</p>}
                 {metadata.length > 0 && <p class="metadata">{metadata.join(' · ')}</p>}
-                {entry.frontmatter.excerpt && <p class="dek">{entry.frontmatter.excerpt}</p>}
-                <div class="action-row">
-                  {entry.frontmatter.paperurl && <a class="button" href={entry.frontmatter.paperurl}>Paper PDF</a>}
-                  {entry.frontmatter.slidesurl && <a class="button button--secondary" href={entry.frontmatter.slidesurl}>Slides</a>}
-                </div>
-                {entry.frontmatter.bibtex && (
+                {isPublication && entry.frontmatter.excerpt && <p class="dek">{entry.frontmatter.excerpt}</p>}
+                {isPublication ? (
+                  <div class="action-row">
+                    {entry.frontmatter.paperurl && <a class="button" href={entry.frontmatter.paperurl}>Paper PDF</a>}
+                    {entry.frontmatter.slidesurl && <a class="button button--secondary" href={entry.frontmatter.slidesurl}>Slides</a>}
+                  </div>
+                ) : (
+                  <div class="archive-card__links">
+                    {entry.frontmatter.slidesurl && (
+                      <a href={entry.frontmatter.slidesurl}>
+                        <span>Slides</span>
+                      </a>
+                    )}
+                    {entry.frontmatter.paperurl && (
+                      <a href={entry.frontmatter.paperurl}>
+                        <span>Paper</span>
+                      </a>
+                    )}
+                  </div>
+                )}
+                {isPublication && entry.frontmatter.bibtex && (
                   <details class="citation-card">
                     <summary>
                       <span>BibTeX citation</span>
@@ -148,40 +221,10 @@ function citationLines(citation) {
       </section>
     )}
 
-    {talks.length > 0 && (
-      <section class="work-section">
-        <div class="work-section__heading">
-          <p class="eyebrow">Talks</p>
-          <h2>Presentations and related material</h2>
-        </div>
-        <div class="work-talk-list">
-          {talks.map((entry) => (
-            <section id={`talk-${entry.slug}`} class="work-talk">
-              <p class="work-evidence__eyebrow">{entry.frontmatter.venue_abbreviation} {formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}</p>
-              <h3>{entry.frontmatter.title}</h3>
-              <p class="metadata">{compact([entry.frontmatter.venue, entry.frontmatter.location, formatDate(entry.frontmatter.date)]).join(' · ')}</p>
-              <div class="archive-card__links">
-                {entry.frontmatter.slidesurl && (
-                  <a href={entry.frontmatter.slidesurl}>
-                    <span>Slides</span>
-                  </a>
-                )}
-                {entry.frontmatter.paperurl && (
-                  <a href={entry.frontmatter.paperurl}>
-                    <span>Paper</span>
-                  </a>
-                )}
-              </div>
-            </section>
-          ))}
-        </div>
-      </section>
-    )}
-
     {PrimaryContent && (
       <section class="work-section work-section--narrative">
         <div class="work-section__heading">
-          <p class="eyebrow">Technical Story</p>
+          <p class="eyebrow">Technical story</p>
           <h2>How the system works</h2>
         </div>
         <div class="article">

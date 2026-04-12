@@ -1658,12 +1658,19 @@ a:hover {
 }
 
 .work-section__heading .eyebrow {
+  color: var(--accent-dark);
+  display: none;
   flex: 0 0 auto;
   margin: 0;
 }
 
-.work-evidence-list,
-.work-talk-list {
+@media (min-width: 900px) {
+  .work-section__heading .eyebrow {
+    display: block;
+  }
+}
+
+.work-evidence-list {
   display: grid;
   gap: 16px;
 }
@@ -1856,6 +1863,10 @@ a:hover {
   display: grid;
   gap: 10px;
   padding: 22px 24px;
+}
+
+.work-talk .work-evidence__title-row {
+  grid-template-columns: 1fr;
 }
 
 .work-talk .archive-card__links {
