@@ -1,133 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CompilerProjectCard from '../components/CompilerProjectCard.astro';
+import { compilerProjects } from '../data/compilerProjects.js';
+
+const featuredProjects = compilerProjects.filter((project) => project.featured);
+const supportingProjects = compilerProjects.filter((project) => !project.featured);
 ---
 
-<BaseLayout title="Compiler Work" description="Compiler systems and research projects most relevant to compiler engineering roles.">
-  <article class="article">
-    <h1>Compiler Work</h1>
-    <p>
-      This page collects the compiler systems and research projects most relevant
-      to compiler engineering, programming languages, and systems roles. My work
-      centers on optimization, IR design, equality saturation, hardware-aware
-      compilation, and managed-language infrastructure.
-    </p>
+<BaseLayout title="Compiler Work" description="Compiler systems and research projects most relevant to compiler engineering roles." showSidebar={false}>
+  <section class="compiler-showcase">
+    <div class="compiler-hero">
+      <p class="eyebrow">Compiler Systems Portfolio</p>
+      <h1>Compiler systems for optimization, IR design, and runtimes.</h1>
+      <p>
+        I build compiler infrastructure for optimization, IR design, equality
+        saturation, hardware-aware compilation, managed runtimes, and MLIR
+        tooling. The projects below span research prototypes, open-source
+        infrastructure, and production-minded systems work.
+      </p>
+      <div class="action-row">
+        <a class="button" href="/files/resume.pdf">Resume PDF</a>
+        <a class="button button--secondary" href="https://github.com/jonathanvdc">GitHub</a>
+        <a class="button button--secondary" href="mailto:jonathan.vandercruysse@mail.mcgill.ca">Email</a>
+      </div>
+    </div>
 
-    <h2>Foresight</h2>
-    <p>
-      <a href="/portfolio/2026-foresight">Foresight</a> is a parallel,
-      extensible equality saturation library in Scala. It supports programmable
-      saturation strategies, generalized e-graph metadata, and deferred parallel rewriting.
-    </p>
-    <p>
-      <strong>Why it matters:</strong> Foresight makes equality saturation more
-      practical for complex compiler workflows where fixed saturation loops,
-      single-threaded execution, and rigid analysis interfaces become limiting.
-    </p>
-    <p>
-      <strong>Results:</strong> Up to 16x speedups on a reimplementation of
-      latent idiom recognition, with robust scaling for key rewrite and analysis
-      phases. The system is described in our
-      <a href="/publication/2026-cc-foresight">CC 2026 paper</a>, and the source
-      code is available on <a href="https://github.com/jonathanvdc/foresight">GitHub</a>.
-    </p>
-    <p><strong>Technologies:</strong> Scala, equality saturation, e-graphs, parallel rewriting, compiler optimization, IR metadata.</p>
+    <div class="compiler-section-heading">
+      <p class="eyebrow">Featured Systems</p>
+      <h2>Recent compiler research</h2>
+    </div>
+    <div class="compiler-grid compiler-grid--featured">
+      {featuredProjects.map((project) => <CompilerProjectCard project={project} />)}
+    </div>
 
-    <h2>SkeleShare</h2>
-    <p>
-      <a href="/publication/2026-cgo-skeleshare">SkeleShare</a> automates
-      hardware resource allocation and sharing for FPGA designs. It combines
-      equality saturation, algorithmic skeletons, and solver-based extraction to
-      search across hardware design choices.
-    </p>
-    <p>
-      <strong>Why it matters:</strong> Efficient FPGA compilation requires expert
-      decisions about resource sharing and duplication. SkeleShare turns that
-      manual hardware-design problem into an automated compiler optimization problem.
-    </p>
-    <p>
-      <strong>Results:</strong> Evaluated on neural-network and image-processing
-      workloads targeting a real FPGA, SkeleShare matches or exceeds expert
-      manual designs. The work appears at CGO 2026, with an artifact available on Zenodo.
-    </p>
-    <p><strong>Technologies:</strong> Equality saturation, FPGA compilation, high-level synthesis, solver-based extraction, hardware-aware optimization.</p>
-
-    <h2>Latent Idiom Recognition</h2>
-    <p>
-      <a href="/publication/2024-cgo-latent-idiom-recognition">Latent Idiom Recognition</a>
-      uses equality saturation and a minimalist functional array IR to recognize
-      hidden BLAS and PyTorch idioms.
-    </p>
-    <p>
-      <strong>Why it matters:</strong> Traditional idiom recognizers are brittle:
-      small syntactic changes can hide an optimization opportunity. This work
-      represents programs and idioms in the same compact functional language so
-      equality saturation can discover library calls through semantics-preserving rewrites.
-    </p>
-    <p>
-      <strong>Results:</strong> The generated C implementations achieve a 1.46x
-      geometric mean speedup over reference kernels. The work was published at
-      CGO 2024, and an artifact is available on Zenodo.
-    </p>
-    <p><strong>Technologies:</strong> Equality saturation, functional IRs, array programming, BLAS, PyTorch, optimization search.</p>
-
-    <h2>Flame</h2>
-    <p>
-      <a href="/projects/2018-flame">Flame</a> is an SSA-based compiler framework
-      for managed languages. It reads managed-language programs, performs
-      whole-program optimization, and lowers code toward targets such as LLVM IR
-      and WebAssembly.
-    </p>
-    <p>
-      <strong>Why it matters:</strong> Flame explores what LLVM-like reusable
-      compiler infrastructure can look like for managed-language ecosystems. It
-      combines bytecode front ends, SSA IR infrastructure, optimization passes,
-      and multiple back ends.
-    </p>
-    <p>
-      <strong>Selected capabilities:</strong> .NET IL support, managed-code
-      optimization, SSA construction, constant propagation, scalar replacement of
-      aggregates, LINQ-oriented optimizations, LLVM IR emission, and WebAssembly emission.
-    </p>
-    <p><strong>Technologies:</strong> C#, .NET, JVM bytecode, SSA IRs, LLVM IR, WebAssembly, whole-program optimization.</p>
-
-    <h2>MLIR.NET</h2>
-    <p>
-      <a href="/projects/2026-mlir-net">MLIR.NET</a> is a strongly typed .NET
-      representation of MLIR. It models MLIR concepts such as operands,
-      attributes, regions, and types in C#, and reconstructs MLIR's Operation
-      Definition Specification (ODS) to generate dialect-specific APIs from
-      TableGen definitions.
-    </p>
-    <p>
-      <strong>Why it matters:</strong> MLIR is powerful but structurally rich.
-      MLIR.NET explores how to make that structure safer and more ergonomic from
-      .NET while preserving enough detail for syntax-preserving IR manipulation.
-    </p>
-    <p>
-      <strong>Selected capabilities:</strong> Typed operation models, generated
-      dialect-specific C# types, parser/printer infrastructure, layered concrete
-      and abstract representations, and TableGen-driven code generation.
-    </p>
-    <p><strong>Technologies:</strong> C#, MLIR, TableGen, ODS, typed IRs, parser/printer generation, compiler tooling.</p>
-
-    <h2>Julia GPU Garbage Collection</h2>
-    <p>
-      My master's thesis explored
-      <a href="/portfolio/2019-thesis">garbage collection for Julia on GPUs</a>.
-      I designed and implemented a conservative mark-and-sweep GPU garbage
-      collector for CUDAnative.jl and introduced abstraction layers in the Julia
-      compiler to support GC implementation reuse.
-    </p>
-    <p><strong>Results:</strong> Benchmarks using the GC were roughly twice as fast as versions compiled to use CUDA's <code>malloc</code> implementation.</p>
-    <p><strong>Technologies:</strong> Julia, GPU programming, CUDAnative.jl, LLVM IR, garbage collection, runtime systems.</p>
-
-    <h2>Modelverse JIT</h2>
-    <p>
-      The <a href="/portfolio/2017-modelverse-jit-compiler">Modelverse JIT compiler</a>
-      is a tiered just-in-time compiler for graph-based bytecode. It includes a
-      fast interpreter, a baseline JIT, and an optimizing SSA-based JIT.
-    </p>
-    <p><strong>Results:</strong> Typical Modelverse workloads run roughly 37x faster than on the previous virtual machine.</p>
-    <p><strong>Technologies:</strong> JIT compilation, SSA IRs, bytecode interpretation, tiered compilation, runtime optimization.</p>
-  </article>
+    <div class="compiler-section-heading">
+      <p class="eyebrow">Compiler Infrastructure</p>
+      <h2>Projects spanning IRs, runtimes, and code generation</h2>
+    </div>
+    <div class="compiler-grid">
+      {supportingProjects.map((project) => <CompilerProjectCard project={project} />)}
+    </div>
+  </section>
 </BaseLayout>
