@@ -29,8 +29,7 @@ const locationSummary = 'Sydney · Toronto · Edinburgh · Athens';
           : entry.url;
         const links = [
           entry.frontmatter.slidesurl && { label: 'Slides', href: entry.frontmatter.slidesurl },
-          entry.frontmatter.paperurl && { label: 'Paper', href: entry.frontmatter.paperurl },
-          entry.frontmatter.work_slug && { label: 'Work page', href: canonicalHref }
+          entry.frontmatter.paperurl && { label: 'Paper', href: entry.frontmatter.paperurl }
         ].filter(Boolean);
 
         return (

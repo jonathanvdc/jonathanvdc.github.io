@@ -35,8 +35,7 @@ const stats = [
           : entry.url;
         const links = [
           entry.frontmatter.paperurl && { label: 'PDF', href: entry.frontmatter.paperurl },
-          entry.frontmatter.slidesurl && { label: 'Slides', href: entry.frontmatter.slidesurl },
-          entry.frontmatter.work_slug && { label: 'Work page', href: canonicalHref }
+          entry.frontmatter.slidesurl && { label: 'Slides', href: entry.frontmatter.slidesurl }
         ].filter(Boolean);
         const badges = badgesFromKeys(entry.frontmatter.artifact_badges);
 
