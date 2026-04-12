@@ -79,14 +79,20 @@ a:hover {
 .brand-mark {
   background: var(--accent-dark);
   border-radius: 999px;
-  color: var(--paper);
-  display: inline-grid;
-  font-size: 0.78rem;
+  display: block;
+  flex: 0 0 auto;
   height: 40px;
-  letter-spacing: 0.08em;
-  place-items: center;
-  text-transform: uppercase;
+  overflow: hidden;
+  padding: 2px;
   width: 40px;
+}
+
+.brand-mark img {
+  border-radius: inherit;
+  display: block;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .brand-text {
@@ -234,6 +240,14 @@ a:hover {
 
 .article li + li {
   margin-top: 0.38rem;
+}
+
+.article img {
+  border-radius: 18px;
+  display: block;
+  height: auto;
+  margin: 28px 0;
+  max-width: 100%;
 }
 
 .eyebrow,
@@ -423,6 +437,7 @@ a:hover {
   border-bottom: 1px solid rgba(222, 212, 191, 0.72);
   min-height: 190px;
   overflow: hidden;
+  pointer-events: none;
   position: relative;
 }
 
