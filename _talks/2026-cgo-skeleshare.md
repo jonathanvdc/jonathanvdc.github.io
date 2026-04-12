@@ -9,6 +9,7 @@ venue: '24th ACM/IEEE International Symposium on Code Generation and Optimizatio
 venue_abbreviation: CGO
 location: "Sydney, Australia"
 paperurl: /files/2026-cgo-skeleshare.pdf
+slidesurl: /files/2026-cgo-skeleshare-slides.pdf
 ---
 
 I presented [our paper on SkeleShare](/compiler-work/skeleshare/) at [CGO 2026](https://2026.cgo.org/details/cgo-2026-papers/49/SkeleShare-Algorithmic-Skeletons-and-Equality-Saturation-for-Hardware-Resource-Shari), co-located with HPCA, PPoPP, and CC.

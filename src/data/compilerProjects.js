@@ -12,6 +12,7 @@ export const compilerProjects = [
     tech: ['Scala', 'e-graphs', 'parallel rewriting', 'IR metadata'],
     links: [
       { label: 'Paper', href: '/files/2026-cc-foresight.pdf' },
+      { label: 'Slides', href: '/files/2026-cc-foresight-slides.pdf' },
       { label: 'Source', href: 'https://github.com/jonathanvdc/foresight' }
     ],
     visual: 'egraph',
@@ -35,7 +36,8 @@ export const compilerProjects = [
       'Automates hardware resource allocation and sharing by combining equality saturation, algorithmic skeletons, and solver-based extraction.',
     tech: ['FPGA', 'HLS', 'equality saturation', 'solver extraction'],
     links: [
-      { label: 'Paper', href: '/files/2026-cgo-skeleshare.pdf' }
+      { label: 'Paper', href: '/files/2026-cgo-skeleshare.pdf' },
+      { label: 'Slides', href: '/files/2026-cgo-skeleshare-slides.pdf' }
     ],
     visual: 'fpga',
     mask: {

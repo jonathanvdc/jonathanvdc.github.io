@@ -9,6 +9,7 @@ venue: '35th ACM SIGPLAN International Conference on Compiler Construction'
 venue_abbreviation: CC
 location: "Sydney, Australia"
 paperurl: /files/2026-cc-foresight.pdf
+slidesurl: /files/2026-cc-foresight-slides.pdf
 ---
 
 I presented [our paper on Foresight](/compiler-work/foresight/) at [CC 2026](https://conf.researchr.org/details/CC-2026/calls/15/Parallel-and-Customizable-Equality-Saturation), co-located with HPCA, CGO, and PPoPP.
