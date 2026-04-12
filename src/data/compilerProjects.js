@@ -36,6 +36,10 @@ export const compilerProjects = [
       { label: 'Paper', href: '/publication/2026-cgo-skeleshare/' }
     ],
     visual: 'fpga',
+    image: {
+      src: '/images/teaser-2026-skeleshare.svg',
+      alt: 'SkeleShare FPGA resource sharing teaser illustration'
+    },
     featured: true
   },
   {
