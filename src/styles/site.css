@@ -361,6 +361,15 @@ a:hover {
   padding: 0;
 }
 
+.article .story-code {
+  background:
+    radial-gradient(circle at top left, rgba(216, 239, 231, 0.72), transparent 13rem),
+    rgba(255, 253, 247, 0.72);
+  border: 1px solid rgba(15, 102, 85, 0.14);
+  color: #20322a;
+  white-space: pre;
+}
+
 .eyebrow,
 .metadata,
 .authors {
