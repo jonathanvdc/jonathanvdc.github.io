@@ -61,7 +61,12 @@ export const compilerProjects = [
       { label: 'Paper', href: '/publication/2024-cgo-latent-idiom-recognition/' },
       { label: 'Slides', href: '/files/2024-cgo-slides.pdf' }
     ],
-    visual: 'array'
+    mask: {
+      src: '/images/teaser-2024-liar-mask.svg',
+      alt: 'Latent Idiom Recognition teaser silhouette',
+      from: '#febd3aff',
+      to: '#d8582fff'
+    }
   },
   {
     id: 'flame',
