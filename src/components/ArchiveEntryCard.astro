@@ -1,0 +1,26 @@
+---
+const { entry, meta = [], eyebrow, links = [] } = Astro.props;
+const { frontmatter } = entry;
+---
+
+<li class="archive-card">
+  <a class="archive-card__overlay" href={entry.url} aria-label={`Read more about ${frontmatter.title}`}></a>
+  <div class="archive-card__rail">
+    <span>{eyebrow}</span>
+  </div>
+  <div class="archive-card__body">
+    <h2><a href={entry.url}>{frontmatter.title}</a></h2>
+    {frontmatter.authors && <p class="authors">{frontmatter.authors}</p>}
+    {meta.length > 0 && <p class="metadata">{meta.filter(Boolean).join(' · ')}</p>}
+    {frontmatter.excerpt && <p>{frontmatter.excerpt}</p>}
+    {links.length > 0 && (
+      <div class="archive-card__links">
+        {links.map((link) => (
+          <a href={link.href}>
+            <span>{link.label}</span>
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+</li>

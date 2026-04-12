@@ -1,0 +1,16 @@
+---
+const { eyebrow, title, description, stats = [], tone = 'research' } = Astro.props;
+---
+
+<section class:list={['archive-hero', `archive-hero--${tone}`]}>
+  <div>
+    <p class="eyebrow">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </div>
+  {stats.length > 0 && (
+    <ul class="archive-hero__stats" aria-label={`${title} highlights`}>
+      {stats.map((stat) => <li>{stat}</li>)}
+    </ul>
+  )}
+</section>

@@ -1,29 +1,47 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArchiveEntryCard from '../../components/ArchiveEntryCard.astro';
+import ArchiveHero from '../../components/ArchiveHero.astro';
 import { byDateDesc, entriesFromGlob, formatDate } from '../../lib/content.js';
 
 const publications = entriesFromGlob(
   'publication',
   import.meta.glob('../../../_publications/*.md', { eager: true })
 ).sort(byDateDesc);
+
+const stats = [
+  `${publications.length} peer-reviewed papers`,
+  'CGO · CC · SPLASH',
+  'papers, slides, artifacts'
+];
 ---
 
-<BaseLayout title="Publications" description="Peer-reviewed publications by Jonathan Van der Cruysse.">
-  <article class="article">
-    <p class="eyebrow">Research</p>
-    <h1>Publications</h1>
-    <p class="dek">Peer-reviewed compiler systems work spanning equality saturation, FPGA compilation, GPU language runtimes, and idiom recognition.</p>
-    <ol class="collection-list">
-      {publications.map((entry) => (
-        <li class="collection-card">
-          <h2><a href={entry.url}>{entry.frontmatter.title}</a></h2>
-          {entry.frontmatter.authors && <p class="authors">{entry.frontmatter.authors}</p>}
-          <p class="metadata">
-            {[entry.frontmatter.venue, formatDate(entry.frontmatter.date)].filter(Boolean).join(' · ')}
-          </p>
-          {entry.frontmatter.excerpt && <p>{entry.frontmatter.excerpt}</p>}
-        </li>
-      ))}
+<BaseLayout title="Publications" description="Peer-reviewed publications by Jonathan Van der Cruysse." showSidebar={false}>
+  <section class="archive-page">
+    <ArchiveHero
+      eyebrow="Research"
+      title="Publications"
+      description="Peer-reviewed compiler systems work on equality saturation, IR design, FPGA compilation, source code rewriting, and idiom recognition."
+      stats={stats}
+      tone="research"
+    />
+
+    <ol class="archive-list">
+      {publications.map((entry) => {
+        const links = [
+          entry.frontmatter.paperurl && { label: 'PDF', href: entry.frontmatter.paperurl },
+          entry.frontmatter.slidesurl && { label: 'Slides', href: entry.frontmatter.slidesurl }
+        ].filter(Boolean);
+
+        return (
+          <ArchiveEntryCard
+            entry={entry}
+            eyebrow={formatDate(entry.frontmatter.date, { year: 'numeric', month: undefined })}
+            meta={[entry.frontmatter.venue, formatDate(entry.frontmatter.date)]}
+            links={links}
+          />
+        );
+      })}
     </ol>
-  </article>
+  </section>
 </BaseLayout>
