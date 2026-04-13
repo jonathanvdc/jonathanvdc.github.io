@@ -1,12 +1,13 @@
 ---
 const { to } = Astro.props;
+const canonicalTo = new URL(to, Astro.site ?? Astro.url).toString();
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="refresh" content={`0; url=${to}`} />
-    <link rel="canonical" href={to} />
+    <link rel="canonical" href={canonicalTo} />
     <title>Redirecting...</title>
   </head>
   <body>

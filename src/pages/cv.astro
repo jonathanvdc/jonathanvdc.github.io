@@ -1,11 +1,5 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import RedirectPage from '../components/RedirectPage.astro';
 ---
 
-<BaseLayout title="Resume" description="Redirect to Jonathan Van der Cruysse's resume PDF." showSidebar={false}>
-  <meta http-equiv="refresh" content="0; url=/files/resume.pdf" />
-  <article class="article">
-    <h1>Resume</h1>
-    <p>This page redirects to <a href="/files/resume.pdf">the latest resume PDF</a>.</p>
-  </article>
-</BaseLayout>
+<RedirectPage to="/resume/" />

@@ -17,24 +17,49 @@ const featuredProjects = compilerProjects.filter((project) => project.featured);
       </p>
       <div class="home-hero__actions">
         <a class="button" href="/compiler-work/">See Compiler Work</a>
-        <a class="button button--secondary" href="/files/resume.pdf">Resume PDF</a>
+        <a class="button button--secondary" href="/resume/">Resume PDF</a>
       </div>
     </section>
 
     <dl class="home-proof" aria-label="Compiler systems highlights">
       <div>
-        <dt>Recent Venues</dt>
-        <dd>CGO · CC</dd>
+        <dt>Published At</dt>
+        <dd>CGO 2026 · CC 2026 · CGO 2024</dd>
       </div>
       <div>
-        <dt>Systems</dt>
-        <dd>Foresight · SkeleShare · MLIR.NET</dd>
+        <dt>Built Systems For</dt>
+        <dd>e-graphs · FPGAs · MLIR · managed runtimes</dd>
       </div>
       <div>
-        <dt>Looking For</dt>
-        <dd>Compiler, PL, and systems roles in Canada</dd>
+        <dt>Results</dt>
+        <dd>16x speedup in Foresight; expert-level FPGA designs in SkeleShare</dd>
       </div>
     </dl>
+
+    <!-- <section class="home-next" aria-labelledby="home-next-title">
+      <div>
+        <p class="eyebrow">Start Here</p>
+        <h2 id="home-next-title">The shortest paths into the work.</h2>
+      </div>
+      <div class="home-next__links">
+        <a href="/compiler-work/foresight/">
+          <span>Parallel e-graphs</span>
+          <strong>Foresight</strong>
+        </a>
+        <a href="/compiler-work/skeleshare/">
+          <span>Hardware compilation</span>
+          <strong>SkeleShare</strong>
+        </a>
+        <a href="/compiler-work/mlir-net/">
+          <span>Compiler infrastructure</span>
+          <strong>MLIR.NET</strong>
+        </a>
+        <a href="/compiler-work/julia-gpu-gc/">
+          <span>Runtime systems</span>
+          <strong>Julia GPU GC</strong>
+        </a>
+      </div>
+    </section> -->
 
     <section class="home-narrative">
       <div>
@@ -48,6 +73,49 @@ const featuredProjects = compilerProjects.filter((project) => project.featured);
         work turns equality saturation and compact functional IRs into tools for
         parallel rewriting, FPGA design search, and library idiom recognition.
       </p>
+    </section>
+
+    <section class="home-guide" aria-labelledby="home-guide-title">
+      <div class="compiler-section-heading">
+        <p class="eyebrow">Guide</p>
+        <h2 id="home-guide-title">Areas of focus</h2>
+      </div>
+      <div class="home-guide__lanes">
+        <article>
+          <h3>Equality saturation at scale</h3>
+          <p>
+            Foresight makes e-graphs parallel and programmable; Latent Idiom Recognition
+            uses equality saturation to recover hidden high-performance library calls.
+          </p>
+          <div class="archive-card__links">
+            <a href="/compiler-work/foresight/"><span>Foresight</span></a>
+            <a href="/compiler-work/latent-idiom-recognition/"><span>Latent Idiom Recognition</span></a>
+          </div>
+        </article>
+        <article>
+          <h3>Hardware-aware compilation</h3>
+          <p>
+            SkeleShare searches FPGA resource-sharing designs with equality saturation,
+            solver-based extraction, and hardware-conscious program structure.
+          </p>
+          <div class="archive-card__links">
+            <a href="/compiler-work/skeleshare/"><span>SkeleShare</span></a>
+            <!-- <a href="/files/2026-cgo-skeleshare.pdf"><span>CGO paper</span></a> -->
+          </div>
+        </article>
+        <article>
+          <h3>Compiler infrastructure</h3>
+          <p>
+            MLIR.NET, Flame, and the Julia GPU garbage collector cover typed IR APIs,
+            SSA optimization, LLVM lowering, managed runtimes, and GPU runtime support.
+          </p>
+          <div class="archive-card__links">
+            <a href="/compiler-work/mlir-net/"><span>MLIR.NET</span></a>
+            <a href="/compiler-work/flame/"><span>Flame</span></a>
+            <a href="/compiler-work/julia-gpu-gc/"><span>Julia GPU GC</span></a>
+          </div>
+        </article>
+      </div>
     </section>
 
     <section class="home-featured">
