@@ -76,13 +76,13 @@ export const compilerProjects = [
     subtitle: 'Managed-language compiler framework',
     href: '/compiler-work/flame/',
     venue: 'Open source',
-    impact: 'SSA optimizer with LLVM and Wasm back ends',
-    role: 'Designed compiler IR, optimizations, and back ends',
+    impact: 'Evolved from expression trees into an SSA CFG optimizer',
+    role: 'Designed the IR, analyses, optimization passes, back ends',
     blurb:
-      'A reusable SSA-based compiler framework for managed languages, whole-program optimization, and lowering from .NET-style programs.',
-    tech: ['C#', '.NET IL', 'SSA', 'LLVM IR', 'WebAssembly'],
+      'A long-running hobby compiler framework for managed languages, CIL optimization, SSA-based analysis, and LLVM-oriented lowering.',
+    tech: ['C#', '.NET IL', 'SSA', 'LLVM IR'],
     links: [
-      { label: 'Source', href: 'https://github.com/jonathanvdc/flame' }
+      { label: 'Source', href: 'https://github.com/jonathanvdc/Flame' }
     ],
     mask: {
       src: '/images/teaser-project-flame-mask.svg',
