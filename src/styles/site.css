@@ -263,6 +263,8 @@ a:hover {
 .article {
   font-size: 1.08rem;
   line-height: 1.75;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .article__eyebrow-row {
@@ -341,6 +343,7 @@ a:hover {
   overflow-x: auto;
   padding: 18px;
   white-space: pre;
+  width: 100%;
 }
 
 .article :not(pre) > code {
@@ -357,8 +360,10 @@ a:hover {
   border: 0;
   color: inherit;
   display: block;
+  max-width: 100%;
   min-width: 0;
   padding: 0;
+  white-space: inherit;
 }
 
 .article .story-code {
@@ -367,6 +372,7 @@ a:hover {
     rgba(255, 253, 247, 0.72);
   border: 1px solid rgba(15, 102, 85, 0.14);
   color: #20322a;
+  overflow-wrap: normal;
   white-space: pre;
 }
 
@@ -2265,5 +2271,14 @@ a:hover {
 
   .work-evidence .artifact-badges img {
     height: 48px;
+  }
+
+  .article pre {
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+  }
+
+  .article .story-code {
+    overflow-wrap: anywhere;
   }
 }
