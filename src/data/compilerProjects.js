@@ -118,11 +118,11 @@ export const compilerProjects = [
     subtitle: 'Runtime support for GPU languages',
     href: '/compiler-work/julia-gpu-gc/',
     venue: 'Master\'s thesis',
-    impact: '2x faster than CUDA malloc baseline',
-    role: 'Implemented a conservative mark-and-sweep GPU GC',
+    impact: '2x faster than CUDA malloc baseline; thesis-prize nominated',
+    role: 'Designed Julia compiler GC hooks and a GPU mark-and-sweep runtime',
     blurb:
-      'Introduced compiler/runtime abstraction layers for reusable GPU garbage collection in CUDAnative.jl and Julia compiler infrastructure.',
-    tech: ['Julia', 'GPU runtime', 'LLVM IR', 'garbage collection'],
+      'Added LLVM IR-level GC lowering hooks to Julia and used them to build transparent mark-and-sweep garbage collection for CUDAnative GPU kernels.',
+    tech: ['Julia', 'LLVM IR', 'GPU', 'garbage collection', 'CUDAnative'],
     links: [
       { label: 'Thesis', href: '/files/2019-garbage-collection-abstractions-for-high-level-gpu-languages.pdf' }
     ],
