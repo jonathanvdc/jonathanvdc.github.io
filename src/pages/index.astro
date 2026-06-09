@@ -6,18 +6,19 @@ import { compilerProjects } from '../data/compilerProjects.js';
 const featuredProjects = compilerProjects.filter((project) => project.featured);
 ---
 
-<BaseLayout title="Jonathan Van der Cruysse" description="Compiler engineer specializing in optimizations, IR design, and equality saturation">
+<BaseLayout title="Jonathan Van der Cruysse" description="Compiler engineer at Cerebras working on compiler infrastructure for AI accelerator systems">
   <section class="home-page">
     <section class="home-hero">
-      <p class="eyebrow">Compilers · IRs · Equality Saturation</p>
-      <h1>Compiler engineer building compilers for new hardware.</h1>
+      <p class="eyebrow">AI Accelerators · Compiler IRs · Equality Saturation</p>
+      <h1>Compiler engineer building infrastructure for emerging hardware.</h1>
       <p>
-        I build compilers for emerging systems, including accelerators, FPGAs, managed runtimes, and MLIR tooling.
-        My work focuses on IR design and novel optimization techniques, including equality saturation.
+        I build compiler systems for accelerators, FPGAs, managed runtimes, and MLIR tooling.
+        My work focuses on IR design, hardware-aware compilation, and optimization techniques
+        including equality saturation.
       </p>
       <div class="home-hero__actions">
-        <a class="button" href="/compiler-work/">See Compiler Work</a>
-        <a class="button button--secondary" href="/resume/">Resume PDF</a>
+        <a class="button" href="/compiler-work/">Compiler Work</a>
+        <a class="button button--secondary" href="/publications/">Publications</a>
       </div>
     </section>
 
@@ -63,15 +64,17 @@ const featuredProjects = compilerProjects.filter((project) => project.featured);
 
     <section class="home-narrative">
       <div>
-        <p class="eyebrow">Current Focus</p>
+        <p class="eyebrow">Now</p>
         <h2>Research-grade ideas, engineered as usable compiler infrastructure.</h2>
       </div>
       <p>
-        I am a PhD candidate at <a href="https://www.mcgill.ca/">McGill University</a>,
-        affiliated with <a href="https://mila.quebec">Mila</a>, working with
-        <a href="https://cdubach.bitbucket.io">Christophe Dubach</a>. My recent
-        work turns equality saturation and compact functional IRs into tools for
-        parallel rewriting, FPGA design search, and library idiom recognition.
+        I recently joined <a href="https://www.cerebras.ai/">Cerebras</a> as a compiler engineer,
+        where I work on compiler infrastructure for AI accelerator systems. Alongside that,
+        my PhD research at <a href="https://www.mcgill.ca/">McGill University</a> and
+        <a href="https://mila.quebec">Mila</a>, with
+        <a href="https://cdubach.bitbucket.io">Christophe Dubach</a>, turns equality saturation
+        and compact functional IRs into tools for parallel rewriting, FPGA design search,
+        and library idiom recognition.
       </p>
     </section>
 
@@ -95,8 +98,8 @@ const featuredProjects = compilerProjects.filter((project) => project.featured);
         <article>
           <h3>Hardware-aware compilation</h3>
           <p>
-            SkeleShare searches FPGA resource-sharing designs with equality saturation,
-            solver-based extraction, and hardware-conscious program structure.
+            SkeleShare searches hardware resource-sharing designs with equality saturation,
+            solver-based extraction, and hardware-conscious program structure for FPGAs.
           </p>
           <div class="archive-card__links">
             <a href="/compiler-work/skeleshare/"><span>SkeleShare</span></a>
@@ -121,7 +124,7 @@ const featuredProjects = compilerProjects.filter((project) => project.featured);
     <section class="home-featured">
       <div class="compiler-section-heading">
         <p class="eyebrow">Featured Systems</p>
-        <h2>Recent compiler research</h2>
+        <h2>Compiler research that points toward hardware systems</h2>
       </div>
       <div class="compiler-grid compiler-grid--featured">
         {featuredProjects.map((project) => <CompilerProjectCard project={project} />)}
