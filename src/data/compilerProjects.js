@@ -5,7 +5,7 @@ export const compilerProjects = [
     subtitle: 'Parallel equality saturation',
     href: '/compiler-work/foresight/',
     venue: 'CC 2026',
-    impact: 'Up to 16x speedup',
+    impact: '≈16× mean LIAR saturation speedup',
     role: 'Designed and implemented the core system',
     blurb:
       'An equality saturation library that rewrites e-graphs in parallel. Written in Scala, with support for custom saturation strategies.',

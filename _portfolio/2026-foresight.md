@@ -1,110 +1,73 @@
 ---
 title: "Foresight, Scala Equality Saturation Engine"
-excerpt: "Foresight is a parallel, extensible equality saturation library in Scala, featuring programmable saturation strategies, generalized metadata, and deferred parallel rewriting."
+excerpt: "A Scala equality saturation library with parallel rewriting and composable strategies for scheduling rules, bounding search, and restarting from extracted results."
 collection: portfolio
 work_slug: foresight
 ---
 
-I designed and implemented [Foresight](https://github.com/jonathanvdc/foresight), a Scala equality saturation library built around a simple bet: equality saturation should feel like compiler infrastructure, not just a fixed optimization algorithm.
+I designed and implemented [Foresight](https://github.com/jonathanvdc/foresight), a Scala library for equality saturation. Equality saturation lets a compiler explore equivalent versions of a program in an e-graph and then extract a result using a cost model. Keeping alternatives together postpones optimization decisions, but exploring those alternatives can be expensive: the graph may grow too large before the search finishes.
 
-Equality saturation is attractive because it separates two questions that traditional optimizers often tangle together.
-First: what rewrites are legal?
-Second: which final program should we choose?
-An e-graph lets a compiler keep many equivalent programs alive at once, then defer the final choice to an extraction pass.
-That is a lovely idea.
-The trouble starts when you try to use it as part of a real compiler pipeline.
+The usual saturation loop finds matches for rewrite rules, applies them, and repeats until the graph stops changing. Applications often need more control over that process. They may run different rules in successive phases, periodically discard alternatives, or reuse work across several inputs. Supporting those choices affects both how the search is organized and how the engine executes it.
 
-The standard saturation loop is almost suspiciously simple: run rules, rebuild, repeat until nothing changes or a budget runs out.
-That simplicity is part of the appeal, but it becomes a problem when the workflow wants phases, stopping conditions, analysis feedback, search-space control, incremental updates, or domain-specific rule scheduling.
-For compiler work, the interesting question is often not just "what are my rewrites?"
-It is "how should the search itself behave?"
+Foresight addresses this through three parts of its design. Strategies compose the steps of a search, including repetition, time budgets, and restarting from an extracted result. Within each rewrite step, deferred commands let the engine compute and simplify updates in parallel before applying them to the graph. Metadata callbacks maintain the information that analyses and techniques such as incremental saturation need as that graph changes. We evaluated these pieces together by rebuilding LIAR, our array idiom recognizer, and by expressing saturation schedules from prior work as library strategies.
 
-## The saturation loop is the abstraction boundary
+## Composing a saturation strategy
 
-The main design move in Foresight is to make saturation programmable.
-Instead of baking one control loop into the engine, Foresight exposes saturation strategies: composable pieces of rewriting behavior that can be sequenced, repeated, bounded, instrumented, and combined with analyses.
+A strategy describes how an application explores the graph. A timeout can bound a simple saturation loop, but it does not express when to switch rule sets or discard intermediate search states. Foresight provides separate operations for those decisions and lets an application compose them into a schedule.
 
-That matters because compiler optimizations rarely want one undifferentiated bag of rewrites.
-In an idiom recognizer, for example, broad algebraic rewrites can expose many equivalent array expressions, but library-specific rules may only make sense after the search has reached a useful normal form.
-In an incremental optimizer, the right thing to do may be to reuse most of an existing e-graph and only re-saturate the parts affected by a program edit.
-Those are not just different rule sets.
-They are different saturation programs.
+Isaria, an existing equality-saturation vectorizer, gives a useful example of such a schedule. It separates expansion rules from simplification rules. It alternates between those phases and periodically *rebases*: extracts a representative expression and builds a fresh e-graph from it. This discards accumulated alternatives before the next round of search. Vectorization rules run after that process.
 
-In Foresight, a strategy can express a pipeline along these lines:
+In Foresight, we expressed this schedule using the following strategy from the paper:
 
-<pre class="story-code"><code>val pipeline =
-  algebraicRules.untilStable
-    .then(libraryRules.withMatchLimit(10_000))
-    .then(cleanupRules)
+<pre class="story-code"><code>def phase(rules: Seq[Rule]) =
+  MaximalRuleApplication(rules)
+    .withTimeout(phaseTimeout)
     .repeatUntilStable
-    .withTimeout(30.seconds)</code></pre>
 
-That sketch is intentionally small, but it captures the spirit of the API: the control structure of equality saturation becomes visible and reusable.
-Strategies can also attach metadata, rebase an e-graph by extracting a compact representative and restarting from it, or swap between exhaustive, cached, backoff, and stochastic rule application policies.
-The goal is not configurability for its own sake.
-The goal is to let compiler engineers describe the search procedure they actually mean.
+phase(expansionRules)
+  .thenApply(phase(simplificationRules))
+  .withTimeout(expansionAndSimplTimeout)
+  .thenRebase(extractor, areEquivalent)
+  .repeatUntilStable
+  .thenApply(phase(idiomRules))</code></pre>
 
-## Deferred rewriting makes parallelism tractable
+Each phase has its own time budget, and the combined expansion and simplification step has another. Repetition, rebasing, and sequencing are library combinators, so the same pieces can be reused in other schedules. We also expressed a bounded, backoff-based strategy from symbolic-regression work in six lines and applied both schedules to our idiom recognizer. Their effects depended on the kernel: controlling graph growth could improve the result, but could also discard useful alternatives or spend too long exploring them.
 
-Parallelizing equality saturation is awkward because matching and rewriting want to touch the same evolving graph.
-If every match immediately mutates the e-graph, then rule application, analysis updates, congruence maintenance, and synchronization all become tangled together.
-Foresight separates those phases.
+## Rewrites produce commands
 
-The rewrite pipeline is staged:
+Each rule-application step in a strategy still needs to find matches and apply their rewrites. Many of those matches can be processed independently, so this is where Foresight introduces parallel execution. Doing so requires making graph searches safe for concurrent access and separating the computation of a rewrite from its application.
 
-<pre class="story-code"><code>parallel matching
-    -&gt; rewrite commands
-    -&gt; command simplification
-    -&gt; batched e-graph update
-    -&gt; metadata observers
-    -&gt; next strategy step</code></pre>
+Parallel matching has a subtle obstacle: even a lookup can modify an e-graph. Union-find path compression updates parent pointers while finding an e-class's representative. Foresight uses atomic parent updates so multiple threads can safely search the graph.
 
-Matches produce explicit rewrite commands.
-Those commands can be collected, simplified, deduplicated, and applied later as a batch.
-This deferred update boundary is the key systems trick: most of the expensive work can run in parallel, while mutation happens at a controlled synchronization point.
+Applying matches presents a separate problem. A rewrite normally inserts nodes and merges e-classes immediately. Foresight instead generates deferred commands in SSA form, using two operations: <code>add</code> and <code>union</code>. Matches can generate these commands independently, in parallel.
 
-It also makes the architecture easier to reason about.
-Rewrites stop being invisible side effects of pattern matching and become data that the engine can schedule, batch, inspect, and expose to metadata.
-That is why deferred rewriting is not merely a performance optimization.
-It is what lets parallelism fit cleanly into the rest of the design.
+For example, rewriting <code>pow(v, 3)</code> as <code>v * pow(v, 2)</code> generates commands along these lines, where <code>d</code> is the e-class for <code>v</code> and <code>c</code> contains the original power:
 
-## E-graphs need more than equivalence
+<pre class="story-code"><code>%0 = add(2)
+%1 = add(pow d, %0)
+%2 = add(mul d, %1)
+union %2, c</code></pre>
 
-Real compiler optimizers carry facts.
-They need types, costs, constants, provenance, binding information, versioning, and sometimes very domain-specific annotations.
-Traditional e-class analyses cover part of that story, but Foresight generalizes metadata into extensible observers of e-graph updates.
+If the literal <code>2</code> already exists in e-class <code>b</code>, command simplification removes the first insertion and substitutes <code>b</code> for <code>%0</code>. Independent additions from different matches can then be grouped into batches; dependent additions wait for earlier batches. This also lets metadata updates run over batches of new nodes. Near saturation, many proposed additions already exist, so simplifying commands reduces the work that reaches the graph.
 
-The observer model gives metadata a principled place in the architecture.
-When the e-graph changes, metadata layers can maintain their own view of those changes without being hard-coded into the core.
-That is useful for ordinary analyses such as cost-guided extraction or constant propagation, but it also enables less standard features such as e-class versioning and incremental equality saturation.
+## Metadata for incremental saturation
 
-Foresight also uses slotted e-graphs, which are designed to represent binding structure directly.
-That matters for functional intermediate representations, where alpha-equivalence and bound variables are not edge cases.
-If equality saturation is going to be useful beyond arithmetic expressions, the representation needs to respect the shape of real languages.
+Applying a batch changes more than the expressions stored in the graph. An optimizer also needs to update information associated with those expressions, such as their types and extraction costs. Foresight exposes callbacks after node additions and e-class unions so metadata can respond to the same batched updates used by the rewrite engine.
 
-## A Scala library, not just a paper artifact
+Ordinary e-class analyses derive facts such as types or costs from expressions. These fit the callback interface, but we also wanted it to accommodate information that analyses cannot derive. Incremental saturation provides an example: it needs a version number recording which input was being processed when an e-class was created. That history is not a fact derived from an expression's structure.
 
-I wanted Foresight to be pleasant to use from Scala, not just interesting internally.
-The library includes both immutable and mutable e-graph implementations.
-The immutable version is useful when thread safety, speculation, or simple reasoning matter; the mutable version gives lower overhead for sequential workloads.
-Both expose the same strategy and analysis machinery.
+We used the metadata callbacks to maintain these versions, allowing successive inputs to share one evolving e-graph while restricting rewriting to classes relevant to the current input. This reproduced an incremental saturation technique that previously required a specialized fork of egg. Standard e-class analyses use the same metadata interface.
 
-For front-end ergonomics, Foresight includes a Scala language DSL that can derive e-graph encoders, pattern matching helpers, and rewrite-rule builders from ordinary algebraic data types.
-For lower-level use cases, it also exposes explicit rule, pattern, searcher, and applier APIs.
-That split is important: the library should be approachable for small examples without hiding the machinery needed for serious compiler work.
+## Reimplementing LIAR
 
-## What changed
+The strategy examples and incremental saturation experiment test individual parts of the design. To evaluate the rewrite engine and analysis machinery in a larger compiler application, we rebuilt [LIAR, our latent idiom recognizer](/compiler-work/latent-idiom-recognition/). LIAR uses equality saturation to find opportunities to replace array computations with BLAS calls, requiring variable binding, type inference, and extraction alongside rewriting.
 
-Foresight was evaluated across classical algebraic optimization, latent idiom recognition, scalability strategies from prior work, and incremental equality saturation.
-The results show two different kinds of payoff.
+Foresight's slotted e-graphs handle variable binding directly, eliminating LIAR's De Bruijn index and shift-rule machinery. Type inference became an e-class analysis, and an extraction analysis supported beta reduction.
 
-The first payoff is performance.
-Deferred rewriting and parallel execution let Foresight scale on workloads where sequential engines bottleneck, including a reimplementation of latent idiom recognition that runs up to 16x faster.
+Across the BLAS benchmarks, the reimplementation achieved almost **16× geometric mean saturation speedup** over the original LIAR engine. It also found better replacements for some kernels. For <code>gemm</code>, the original recognizer produced a combination of <code>axpy</code>, <code>gemv</code>, and <code>memset</code> calls; the reimplementation found a <code>gemm</code> call plus a transpose. The resulting code ran **10× faster** on that benchmark.
 
-The second payoff is expressiveness.
-Behaviors that would otherwise require modifying the engine can often be written as compact strategy definitions.
-That includes multi-phase saturation, rebasing, cached rule application, backoff-style search control, and incremental workflows.
+The 16× comparison includes changes to the representation and rewrite engine as well as parallel execution. In a separate thread-scaling experiment, saturation of <code>stencil2d</code> reached about **1.7× speedup at eight threads**. Matching and command generation scaled well, but sequential hashconsing and parts of metadata maintenance limited overall throughput.
 
-The project is ultimately about an abstraction boundary.
-Foresight treats equality saturation not as a monolithic loop, but as a programmable search system with explicit phases, observable updates, and reusable control policies.
-That makes the engine faster in the places where parallelism matters, but just as importantly, it makes equality saturation easier to adapt to the messy workflows that real compiler infrastructure tends to require.
+The classical optimization benchmarks give a complementary comparison with other engines. Foresight found Horner's method and optimal associations for matrix-multiplication chains. It outperformed hegg and slotted on those benchmarks, and egglog on the matrix-chain workloads, but **egg remained faster across all of them**. Foresight's JVM implementation used more memory; the paper reports Java heap usage and egg's resident set size separately.
+
+For applications using the library, Foresight supports Scala 2 and 3 and includes a language DSL for deriving encoders and rewrite helpers from algebraic data types. The [CC 2026 paper](/files/2026-cc-foresight.pdf) describes the algorithms and evaluation in detail. The [source](https://github.com/jonathanvdc/foresight) and [evaluation artifact](https://zenodo.org/records/17955956) are also available.

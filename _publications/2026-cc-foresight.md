@@ -39,7 +39,7 @@ At a glance
 * Published at CC 2026.
 * Introduces Foresight, a parallel and customizable equality saturation engine implemented in Scala.
 * Adds programmable saturation strategies, generalized e-graph metadata, and deferred parallel rewriting.
-* Achieves up to a 16x speedup when reimplementing an existing idiom-recognition system.
+* Achieves almost 16× geometric mean saturation speedup over the original LIAR idiom recognizer.
 * [Preprint](/files/2026-cc-foresight.pdf) · [Source](https://github.com/jonathanvdc/foresight) · [Artifact](https://zenodo.org/records/17955956)
 
 Equality saturation is a powerful compiler optimization technique that represents many semantically equivalent program variants in a single data structure, an e-graph, deferring optimization decisions to a final extraction phase. While equality saturation has enabled a wide range of optimizations and program analyses, existing frameworks suffer from two fundamental limitations: they are largely single-threaded, and they rely on rigid, hard-coded saturation loops that are difficult to customize.
@@ -53,7 +53,7 @@ Finally, Foresight generalizes e-graph metadata by treating analyses and annotat
 This unifies traditional e-class analyses with more advanced use cases such as e-class versioning, enabling features like incremental equality saturation without forking or redesigning the underlying e-graph.
 
 Foresight is implemented in Scala and evaluated on four case studies: classical algebraic optimizations, latent idiom recognition, the reimplementation of existing scalability strategies from the literature, and incremental equality saturation.
-The evaluation shows that Foresight outperforms several existing equality saturation engines, including egglog, on parallel workloads, and achieves up to a 16× speedup when reimplementing an existing idiom recognition system—while also producing higher-quality results.
+The evaluation shows that Foresight outperforms several existing equality saturation engines, including egglog, on parallel workloads, and achieves almost 16× geometric mean saturation speedup over the original LIAR idiom recognizer, while also producing higher-quality results.
 
 Download the preprint [here](/files/2026-cc-foresight.pdf).
 The [source code](https://github.com/jonathanvdc/foresight) is available on GitHub and an [artifact](https://zenodo.org/records/17955956) is available on Zenodo.
