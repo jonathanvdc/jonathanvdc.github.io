@@ -7,12 +7,12 @@ const isHome = currentPath === '/';
 const crumbTitle = title === 'Jonathan Van der Cruysse' ? '' : title;
 
 const parentCrumbs = [
-  { match: /^\/compiler-work\/.+/, href: '/compiler-work/', label: 'Compiler Work' },
+  { match: /^\/compiler-work\/.+/, href: '/compiler-work/', label: 'Projects' },
   { match: /^\/publication\//, href: '/publications/', label: 'Publications' },
   { match: /^\/talks\/.+/, href: '/talks/', label: 'Talks' },
   { match: /^\/teaching\/.+/, href: '/teaching/', label: 'Teaching' },
-  { match: /^\/projects\//, href: '/compiler-work/', label: 'Compiler Work' },
-  { match: /^\/portfolio\//, href: '/compiler-work/', label: 'Compiler Work' }
+  { match: /^\/projects\//, href: '/compiler-work/', label: 'Projects' },
+  { match: /^\/portfolio\//, href: '/compiler-work/', label: 'Projects' }
 ];
 
 const parentCrumb = parentCrumbs.find((crumb) => crumb.match.test(currentPath));

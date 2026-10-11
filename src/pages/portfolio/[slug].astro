@@ -19,4 +19,4 @@ const { entry } = Astro.props;
 const canonicalWorkUrl = entry.frontmatter.work_slug && `/compiler-work/${entry.frontmatter.work_slug}/`;
 ---
 
-{canonicalWorkUrl ? <RedirectPage to={canonicalWorkUrl} /> : <MarkdownLayout entry={entry} eyebrow="Compiler Work" />}
+{canonicalWorkUrl ? <RedirectPage to={canonicalWorkUrl} /> : <MarkdownLayout entry={entry} eyebrow="Projects" />}

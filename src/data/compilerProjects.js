@@ -8,7 +8,7 @@ export const compilerProjects = [
     impact: 'Up to 16x speedup',
     role: 'Designed and implemented the core system',
     blurb:
-      'A parallel, extensible equality saturation library with programmable saturation strategies, generalized e-graph metadata, and deferred parallel rewriting.',
+      'An equality saturation library that rewrites e-graphs in parallel. Written in Scala, with support for custom saturation strategies.',
     tech: ['Scala', 'e-graphs', 'parallel rewriting', 'IR metadata'],
     links: [
       { label: 'Paper', href: '/files/2026-cc-foresight.pdf' },
@@ -33,7 +33,7 @@ export const compilerProjects = [
     impact: 'Matches or exceeds expert designs',
     role: 'Equality-saturation system for hardware design search',
     blurb:
-      'Automates hardware resource allocation and sharing by combining equality saturation, algorithmic skeletons, and solver-based extraction.',
+      'Uses equality saturation to explore how FPGA designs can share hardware resources. A solver selects a design from the resulting e-graph.',
     tech: ['FPGA', 'HLS', 'equality saturation', 'solver extraction'],
     links: [
       { label: 'Paper', href: '/files/2026-cgo-skeleshare.pdf' },
@@ -57,7 +57,7 @@ export const compilerProjects = [
     impact: '1.46x geometric mean speedup',
     role: 'Functional array IR and equality-saturation recognizer',
     blurb:
-      'Recognizes hidden BLAS and PyTorch idioms by representing programs and idioms in a minimalist functional array language.',
+      'Finds opportunities to replace array code with BLAS or PyTorch calls, using equality saturation to recognize equivalent computations.',
     tech: ['array IRs', 'BLAS', 'PyTorch', 'optimization search'],
     links: [
       { label: 'Paper', href: '/files/2024-cgo-latent-idiom-recognition.pdf' },
@@ -79,7 +79,7 @@ export const compilerProjects = [
     impact: 'Evolved from expression trees into an SSA CFG optimizer',
     role: 'Designed the IR, analyses, optimization passes, back ends',
     blurb:
-      'A long-running hobby compiler framework for managed languages, CIL optimization, SSA-based analysis, and LLVM-oriented lowering.',
+      'A hobby compiler framework written in C#. It includes an SSA-based optimizer and back ends for .NET IL and LLVM IR.',
     tech: ['C#', '.NET IL', 'SSA', 'LLVM IR'],
     links: [
       { label: 'Source', href: 'https://github.com/jonathanvdc/Flame' }
@@ -100,7 +100,7 @@ export const compilerProjects = [
     impact: 'TableGen-driven typed APIs',
     role: 'Building parser, printer, IR model, and generated dialect APIs',
     blurb:
-      'Models MLIR operations, regions, attributes, and types in C#, then reconstructs ODS to generate safer dialect-specific APIs.',
+      'C# tooling for reading, writing, and working with MLIR. It uses TableGen dialect definitions to generate typed APIs.',
     tech: ['C#', 'MLIR', 'TableGen', 'ODS', 'typed IRs'],
     links: [
       { label: 'Source', href: 'https://github.com/jonathanvdc/MLIR.NET' }
@@ -121,7 +121,7 @@ export const compilerProjects = [
     impact: '2x faster than CUDA malloc baseline; thesis-prize nominated',
     role: 'Designed Julia compiler GC hooks and a GPU mark-and-sweep runtime',
     blurb:
-      'Added LLVM IR-level GC lowering hooks to Julia and used them to build transparent mark-and-sweep garbage collection for CUDAnative GPU kernels.',
+      'My master’s thesis: adding garbage collection to Julia GPU kernels, with compiler support in Julia and a mark-and-sweep runtime on the GPU.',
     tech: ['Julia', 'LLVM IR', 'GPU', 'garbage collection', 'CUDAnative'],
     links: [
       { label: 'Thesis', href: '/files/2019-garbage-collection-abstractions-for-high-level-gpu-languages.pdf' }
@@ -143,7 +143,7 @@ export const compilerProjects = [
     impact: '37x speedup over reference implementation',
     role: 'Built interpreter, baseline JIT, and optimizing SSA JIT',
     blurb:
-      'A tiered just-in-time compiler for graph-based bytecode, moving hot programs from interpretation to SSA-based optimization.',
+      'A JIT compiler for the Modelverse’s graph-based bytecode. It starts with an interpreter and compiles frequently executed code using an SSA-based optimizer.',
     tech: ['JIT', 'SSA', 'bytecode', 'runtime optimization'],
     links: [
       { label: 'Report', href: '/files/2017-modelverse-jit-report.pdf' }
@@ -164,7 +164,7 @@ export const compilerProjects = [
     impact: '3% Octane overhead vs 76% prior work',
     role: 'Designed the capture-list instrumentation and serializer',
     blurb:
-      'Low-overhead JavaScript instrumentation for serializing functions, closures, and captured variables by making lexical environments queryable.',
+      'Serializes JavaScript functions and their captured variables. Source instrumentation records the lexical environments needed to reconstruct closures.',
     tech: ['JavaScript', 'TypeScript', 'source rewriting', 'closures', 'serialization'],
     links: [
       { label: 'Paper', href: '/files/2019-flashfreeze.pdf' },

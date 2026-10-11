@@ -463,6 +463,10 @@ a:hover {
   max-width: 760px;
 }
 
+.home-hero p:not(.eyebrow) + p:not(.eyebrow) {
+  margin-top: 18px;
+}
+
 .home-hero__actions {
   display: flex;
   flex-wrap: wrap;

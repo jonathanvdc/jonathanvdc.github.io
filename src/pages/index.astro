@@ -6,125 +6,26 @@ import { compilerProjects } from '../data/compilerProjects.js';
 const featuredProjects = compilerProjects.filter((project) => project.featured);
 ---
 
-<BaseLayout title="Jonathan Van der Cruysse" description="Compiler engineer at Cerebras working on compiler infrastructure for AI accelerator systems">
+<BaseLayout title="Jonathan Van der Cruysse" description="Personal website of Jonathan Van der Cruysse: research, software projects, talks, and teaching.">
   <section class="home-page">
     <section class="home-hero">
-      <p class="eyebrow">AI Accelerators · Compiler IRs · Equality Saturation</p>
-      <h1>Compiler engineer building infrastructure for emerging hardware.</h1>
+      <h1>Hi, I’m Jonathan.</h1>
       <p>
-        I build compiler systems for accelerators, FPGAs, managed runtimes, and MLIR tooling.
-        My work focuses on IR design, hardware-aware compilation, and optimization techniques
-        including equality saturation.
+        My research explored equality saturation and its applications to program
+        optimization and FPGA design, with
+        <a href="https://cdubach.bitbucket.io">Christophe Dubach</a> as my PhD supervisor.
       </p>
+      <p>This site collects my research, software projects, talks, and teaching.</p>
       <div class="home-hero__actions">
-        <a class="button" href="/compiler-work/">Compiler Work</a>
+        <a class="button" href="/compiler-work/">Projects</a>
         <a class="button button--secondary" href="/publications/">Publications</a>
       </div>
     </section>
 
-    <dl class="home-proof" aria-label="Compiler systems highlights">
-      <div>
-        <dt>Published At</dt>
-        <dd>CGO 2026 · CC 2026 · CGO 2024</dd>
-      </div>
-      <div>
-        <dt>Built Systems For</dt>
-        <dd>e-graphs · FPGAs · MLIR · managed runtimes</dd>
-      </div>
-      <div>
-        <dt>Results</dt>
-        <dd>16x speedup in Foresight; expert-level FPGA designs in SkeleShare</dd>
-      </div>
-    </dl>
-
-    <!-- <section class="home-next" aria-labelledby="home-next-title">
-      <div>
-        <p class="eyebrow">Start Here</p>
-        <h2 id="home-next-title">The shortest paths into the work.</h2>
-      </div>
-      <div class="home-next__links">
-        <a href="/compiler-work/foresight/">
-          <span>Parallel e-graphs</span>
-          <strong>Foresight</strong>
-        </a>
-        <a href="/compiler-work/skeleshare/">
-          <span>Hardware compilation</span>
-          <strong>SkeleShare</strong>
-        </a>
-        <a href="/compiler-work/mlir-net/">
-          <span>Compiler infrastructure</span>
-          <strong>MLIR.NET</strong>
-        </a>
-        <a href="/compiler-work/julia-gpu-gc/">
-          <span>Runtime systems</span>
-          <strong>Julia GPU GC</strong>
-        </a>
-      </div>
-    </section> -->
-
-    <section class="home-narrative">
-      <div>
-        <p class="eyebrow">Now</p>
-        <h2>Research-grade ideas, engineered as usable compiler infrastructure.</h2>
-      </div>
-      <p>
-        I recently joined <a href="https://www.cerebras.ai/">Cerebras</a> as a compiler engineer,
-        where I work on compiler infrastructure for AI accelerator systems. Alongside that,
-        my PhD research at <a href="https://www.mcgill.ca/">McGill University</a> and
-        <a href="https://mila.quebec">Mila</a>, with
-        <a href="https://cdubach.bitbucket.io">Christophe Dubach</a>, turns equality saturation
-        and compact functional IRs into tools for parallel rewriting, FPGA design search,
-        and library idiom recognition.
-      </p>
-    </section>
-
-    <section class="home-guide" aria-labelledby="home-guide-title">
+    <section class="home-featured" aria-labelledby="selected-projects-title">
       <div class="compiler-section-heading">
-        <p class="eyebrow">Guide</p>
-        <h2 id="home-guide-title">Areas of focus</h2>
-      </div>
-      <div class="home-guide__lanes">
-        <article>
-          <h3>Equality saturation at scale</h3>
-          <p>
-            Foresight makes e-graphs parallel and programmable; Latent Idiom Recognition
-            uses equality saturation to recover hidden high-performance library calls.
-          </p>
-          <div class="archive-card__links">
-            <a href="/compiler-work/foresight/"><span>Foresight</span></a>
-            <a href="/compiler-work/latent-idiom-recognition/"><span>Latent Idiom Recognition</span></a>
-          </div>
-        </article>
-        <article>
-          <h3>Hardware-aware compilation</h3>
-          <p>
-            SkeleShare searches hardware resource-sharing designs with equality saturation,
-            solver-based extraction, and hardware-conscious program structure for FPGAs.
-          </p>
-          <div class="archive-card__links">
-            <a href="/compiler-work/skeleshare/"><span>SkeleShare</span></a>
-            <!-- <a href="/files/2026-cgo-skeleshare.pdf"><span>CGO paper</span></a> -->
-          </div>
-        </article>
-        <article>
-          <h3>Compiler infrastructure</h3>
-          <p>
-            MLIR.NET, Flame, and the Julia GPU garbage collector cover typed IR APIs,
-            SSA optimization, LLVM lowering, managed runtimes, and GPU runtime support.
-          </p>
-          <div class="archive-card__links">
-            <a href="/compiler-work/mlir-net/"><span>MLIR.NET</span></a>
-            <a href="/compiler-work/flame/"><span>Flame</span></a>
-            <a href="/compiler-work/julia-gpu-gc/"><span>Julia GPU GC</span></a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="home-featured">
-      <div class="compiler-section-heading">
-        <p class="eyebrow">Featured Systems</p>
-        <h2>Compiler research that points toward hardware systems</h2>
+        <h2 id="selected-projects-title">Selected projects</h2>
+        <a href="/compiler-work/">All projects →</a>
       </div>
       <div class="compiler-grid compiler-grid--featured">
         {featuredProjects.map((project) => <CompilerProjectCard project={project} />)}

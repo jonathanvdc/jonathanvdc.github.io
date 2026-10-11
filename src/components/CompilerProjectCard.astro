@@ -17,21 +17,6 @@ const { project } = Astro.props;
 
     <p class="compiler-card__blurb">{project.blurb}</p>
 
-    <dl class="compiler-card__facts">
-      <div>
-        <dt>Impact</dt>
-        <dd>{project.impact}</dd>
-      </div>
-      <div>
-        <dt>Role</dt>
-        <dd>{project.role}</dd>
-      </div>
-    </dl>
-
-    <ul class="compiler-card__tech" aria-label={`${project.title} technologies`}>
-      {project.tech.map((item) => <li>{item}</li>)}
-    </ul>
-
     <div class="compiler-card__links">
       {project.links.map((link) => (
         <a href={link.href}>
