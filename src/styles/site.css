@@ -1615,10 +1615,10 @@ a:hover {
 }
 
 .work-section__heading {
-  align-items: end;
+  align-items: flex-start;
   display: flex;
-  gap: 18px;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .work-section__heading h2 {
@@ -1630,15 +1630,9 @@ a:hover {
 
 .work-section__heading .eyebrow {
   color: var(--accent-dark);
-  display: none;
+  display: block;
   flex: 0 0 auto;
   margin: 0;
-}
-
-@media (min-width: 900px) {
-  .work-section__heading .eyebrow {
-    display: block;
-  }
 }
 
 .work-evidence-list {
@@ -1829,7 +1823,7 @@ a:hover {
 .work-talk {
   display: grid;
   gap: 10px;
-  padding: 22px 24px;
+  padding: 22px 0;
 }
 
 .work-talk .work-evidence__title-row {
