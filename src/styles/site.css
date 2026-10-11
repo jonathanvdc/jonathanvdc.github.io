@@ -2026,7 +2026,12 @@ a:hover {
   }
 
   .contact-actions {
-    grid-column: 1 / -1;
+    grid-column: 2;
+    justify-items: start;
+  }
+
+  .author-card p:last-child {
+    margin-bottom: 0;
   }
 
   .compiler-section-heading {
